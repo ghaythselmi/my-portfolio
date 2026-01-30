@@ -216,73 +216,245 @@
         </div>
     </div>
 
-    <!-- My Work Section -->
-    <div id="work" class="w-full px-[12%] py-10 scroll-mt-20">
-        <h2 class="text-center text-5xl font-Ovo">My latest work</h2>
-        <p class="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo">Welcome to my web development portfolio! Explore a
-            collection of projects showcasing my expertise in front-end development.</p>
-        <div class="grid grid-cols-auto my-10 gap-5 dark:text-black">
-            <div class="aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group"
-                style="background-image: url('assets/work-1.png');">
-                <div
-                    class="bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7">
-                    <div>
-                        <h2 class="font-semibold">SpofunCoach</h2>
-                        <p class="text-sm text-gray-700">Full-stack project</p>
-                    </div>
-                    <div
-                        class="border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition">
-                        <img src="assets/send-icon.png" alt="" class="w-5">
-                    </div>
+    
+   <!-- My Work Section -->
+   <div id="work" class="w-full px-[12%] py-10 scroll-mt-20">
+    <h2 class="text-center text-5xl font-Ovo">My latest work</h2>
+    <p class="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo">Welcome to my web development portfolio! Explore a
+        collection of projects showcasing my expertise in front-end development.</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 my-10 max-w-6xl mx-auto">
+        <!-- Project Card 1 - SpofunCoach -->
+        <div class="group relative overflow-hidden rounded-2xl border border-gray-300 dark:border-white/30 bg-white dark:bg-darkHover/30 hover:shadow-[8px_8px_0_#000] dark:hover:shadow-[8px_8px_0_rgba(255,255,255,0.8)] transition-all duration-500 hover:-translate-y-2">
+            <!-- Project Image -->
+            <div class="relative h-64 overflow-hidden">
+                <img src="assets/work-1.png" alt="SpofunCoach" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                <!-- Gradient Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <!-- Tech Stack Pills -->
+                <div class="absolute top-4 left-4 flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-y-4 group-hover:translate-y-0">
+                    <span class="px-3 py-1 bg-[#b820e6] text-white text-xs rounded-full font-semibold">Angular</span>
+                    <span class="px-3 py-1 bg-[#da7d20] text-white text-xs rounded-full font-semibold">Spring Boot</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-[#b820e6] to-[#da7d20] text-white text-xs rounded-full font-semibold">MySQL</span>
                 </div>
             </div>
-            <div class="aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group"
-                style="background-image: url('assets/work-2.png');">
-                <div
-                    class="bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7">
+            
+            <!-- Project Info -->
+            <div class="p-6">
+                <div class="flex items-start justify-between mb-3">
                     <div>
-                        <h2 class="font-semibold">Web Guardian</h2>
-                        <p class="text-sm text-gray-700">Full-stack project</p>
+                        <h3 class="text-2xl font-semibold text-gray-700 dark:text-white font-Ovo mb-2">SpofunCoach</h3>
+                        <p class="text-sm text-gray-600 dark:text-white/70">Full-stack Sports Coaching Platform</p>
                     </div>
-                    <div
-                        class="border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition">
-                        <img src="assets/send-icon.png" alt="" class="w-5">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-[#b820e6] to-[#da7d20] flex items-center justify-center transform group-hover:rotate-45 transition-transform duration-500">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
                     </div>
                 </div>
+                <p class="text-gray-600 dark:text-white/80 text-sm mb-4 line-clamp-2">A comprehensive platform connecting athletes with professional coaches, featuring real-time scheduling and progress tracking.</p>
+                
+                <!-- Action Button -->
+                <button (click)="openProjectDetails('spofuncoach')" class="w-full py-3 px-6 bg-gradient-to-r from-[#b820e6] to-[#da7d20] text-white rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    </svg>
+                    View Details
+                </button>
             </div>
-            <div class="aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group"
-                style="background-image: url('assets/work-3.png');">
-                <div
-                    class="bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7">
-                    <div>
-                        <h2 class="font-semibold">EspritCollab</h2>
-                        <p class="text-sm text-gray-700">Full-stack project</p>
-                    </div>
-                    <div
-                        class="border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition">
-                        <img src="assets/send-icon.png" alt="" class="w-5">
-                    </div>
+        </div>
+
+        <!-- Project Card 2 - Web Guardian -->
+        <div class="group relative overflow-hidden rounded-2xl border border-gray-300 dark:border-white/30 bg-white dark:bg-darkHover/30 hover:shadow-[8px_8px_0_#000] dark:hover:shadow-[8px_8px_0_rgba(255,255,255,0.8)] transition-all duration-500 hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="assets/work-2.png" alt="Web Guardian" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute top-4 left-4 flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-y-4 group-hover:translate-y-0">
+                    <span class="px-3 py-1 bg-[#b820e6] text-white text-xs rounded-full font-semibold">React</span>
+                    <span class="px-3 py-1 bg-[#da7d20] text-white text-xs rounded-full font-semibold">Node.js</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-[#b820e6] to-[#da7d20] text-white text-xs rounded-full font-semibold">MongoDB</span>
                 </div>
             </div>
-            <div class="aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group"
-                style="background-image: url('assets/work-4.png');">
-                <div
-                    class="bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7">
+            
+            <div class="p-6">
+                <div class="flex items-start justify-between mb-3">
                     <div>
-                        <h2 class="font-semibold">DocNet</h2>
-                        <p class="text-sm text-gray-700">Full-stack project</p>
+                        <h3 class="text-2xl font-semibold text-gray-700 dark:text-white font-Ovo mb-2">Web Guardian</h3>
+                        <p class="text-sm text-gray-600 dark:text-white/70">Cybersecurity Monitoring System</p>
                     </div>
-                    <div
-                        class="border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition">
-                        <img src="assets/send-icon.png" alt="" class="w-5">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-[#b820e6] to-[#da7d20] flex items-center justify-center transform group-hover:rotate-45 transition-transform duration-500">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
                     </div>
                 </div>
+                <p class="text-gray-600 dark:text-white/80 text-sm mb-4 line-clamp-2">Advanced web security platform with real-time threat detection, automated scanning, and comprehensive vulnerability reporting.</p>
+                
+                <button (click)="openProjectDetails('webguardian')" class="w-full py-3 px-6 bg-gradient-to-r from-[#b820e6] to-[#da7d20] text-white rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    </svg>
+                    View Details
+                </button>
             </div>
-        </div><a href="#"
-            class="w-max flex items-center justify-center gap-2 text-gray-700 border border-gray-300 dark:border-white/25 hover:bg-slate-100/70 dark:hover:bg-darkHover rounded-full py-2 px-8 mx-auto my-20 duration-300 dark:text-white">Show
-            more<img src="assets/right-arrow-bold.png" alt="" class="w-4 dark:hidden"><img
-                src="assets/right-arrow-bold-dark.png" alt="" class="w-4 hidden dark:block"></a>
+        </div>
+
+        <!-- Project Card 3 - EspritCollab -->
+        <div class="group relative overflow-hidden rounded-2xl border border-gray-300 dark:border-white/30 bg-white dark:bg-darkHover/30 hover:shadow-[8px_8px_0_#000] dark:hover:shadow-[8px_8px_0_rgba(255,255,255,0.8)] transition-all duration-500 hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="assets/work-3.png" alt="EspritCollab" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute top-4 left-4 flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-y-4 group-hover:translate-y-0">
+                    <span class="px-3 py-1 bg-[#b820e6] text-white text-xs rounded-full font-semibold">Angular</span>
+                    <span class="px-3 py-1 bg-[#da7d20] text-white text-xs rounded-full font-semibold">Symfony</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-[#b820e6] to-[#da7d20] text-white text-xs rounded-full font-semibold">PostgreSQL</span>
+                </div>
+            </div>
+            
+            <div class="p-6">
+                <div class="flex items-start justify-between mb-3">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-700 dark:text-white font-Ovo mb-2">EspritCollab</h3>
+                        <p class="text-sm text-gray-600 dark:text-white/70">Student Collaboration Platform</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-[#b820e6] to-[#da7d20] flex items-center justify-center transform group-hover:rotate-45 transition-transform duration-500">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
+                    </div>
+                </div>
+                <p class="text-gray-600 dark:text-white/80 text-sm mb-4 line-clamp-2">Collaborative workspace for students with project management, file sharing, and real-time communication features.</p>
+                
+                <button (click)="openProjectDetails('espritcollab')" class="w-full py-3 px-6 bg-gradient-to-r from-[#b820e6] to-[#da7d20] text-white rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    </svg>
+                    View Details
+                </button>
+            </div>
+        </div>
+
+        <!-- Project Card 4 - DocNet -->
+        <div class="group relative overflow-hidden rounded-2xl border border-gray-300 dark:border-white/30 bg-white dark:bg-darkHover/30 hover:shadow-[8px_8px_0_#000] dark:hover:shadow-[8px_8px_0_rgba(255,255,255,0.8)] transition-all duration-500 hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="assets/work-4.png" alt="DocNet" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute top-4 left-4 flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-y-4 group-hover:translate-y-0">
+                    <span class="px-3 py-1 bg-[#b820e6] text-white text-xs rounded-full font-semibold">.NET</span>
+                    <span class="px-3 py-1 bg-[#da7d20] text-white text-xs rounded-full font-semibold">Angular</span>
+                    <span class="px-3 py-1 bg-gradient-to-r from-[#b820e6] to-[#da7d20] text-white text-xs rounded-full font-semibold">SQL Server</span>
+                </div>
+            </div>
+            
+            <div class="p-6">
+                <div class="flex items-start justify-between mb-3">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-700 dark:text-white font-Ovo mb-2">DocNet</h3>
+                        <p class="text-sm text-gray-600 dark:text-white/70">Document Management System</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-[#b820e6] to-[#da7d20] flex items-center justify-center transform group-hover:rotate-45 transition-transform duration-500">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
+                    </div>
+                </div>
+                <p class="text-gray-600 dark:text-white/80 text-sm mb-4 line-clamp-2">Enterprise-grade document management with version control, secure sharing, and advanced search capabilities.</p>
+                
+                <button (click)="openProjectDetails('docnet')" class="w-full py-3 px-6 bg-gradient-to-r from-[#b820e6] to-[#da7d20] text-white rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    </svg>
+                    View Details
+                </button>
+            </div>
+        </div>
     </div>
+
+    <a href="#"
+        class="w-max flex items-center justify-center gap-2 text-gray-700 border border-gray-300 dark:border-white/25 hover:bg-slate-100/70 dark:hover:bg-darkHover rounded-full py-2 px-8 mx-auto my-20 duration-300 dark:text-white">Show
+        more<img src="assets/right-arrow-bold.png" alt="" class="w-4 dark:hidden"><img
+            src="assets/right-arrow-bold-dark.png" alt="" class="w-4 hidden dark:block"></a>
+</div>
+
+<!-- Project Details Modal -->
+<div *ngIf="selectedProject" class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/80 backdrop-blur-sm" (click)="closeProjectDetails()">
+    <div class="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white dark:bg-darkTheme rounded-3xl shadow-2xl transform transition-all duration-500 animate-modalSlideIn" (click)="$event.stopPropagation()">
+        <!-- Close Button -->
+        <button (click)="closeProjectDetails()" class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 dark:bg-darkHover hover:bg-gray-200 dark:hover:bg-darkHover/80 transition-colors z-10">
+            <svg class="w-6 h-6 text-gray-700 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+
+        <!-- Modal Content -->
+        <div class="p-8">
+            <!-- Project Header -->
+            <div class="mb-8">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#b820e6] to-[#da7d20] rounded-full mb-4">
+                    <span class="text-white font-semibold text-sm">{{ projectDetails[selectedProject].category }}</span>
+                </div>
+                <h2 class="text-4xl font-bold text-gray-700 dark:text-white font-Ovo mb-4">{{ projectDetails[selectedProject].title }}</h2>
+                <p class="text-lg text-gray-600 dark:text-white/80">{{ projectDetails[selectedProject].subtitle }}</p>
+            </div>
+
+            <!-- Project Image -->
+            <div class="relative h-96 rounded-2xl overflow-hidden mb-8 border border-gray-300 dark:border-white/30">
+                <img [src]="projectDetails[selectedProject].image" [alt]="projectDetails[selectedProject].title" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Tech Stack -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-4 font-Ovo">Technologies Used</h3>
+                <div class="flex flex-wrap gap-3">
+                    <span *ngFor="let tech of projectDetails[selectedProject].technologies" class="px-4 py-2 bg-gradient-to-r from-[#b820e6]/10 to-[#da7d20]/10 dark:from-[#b820e6]/20 dark:to-[#da7d20]/20 border border-gray-300 dark:border-white/30 rounded-lg text-gray-700 dark:text-white font-semibold">
+                        {{ tech }}
+                    </span>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-4 font-Ovo">About the Project</h3>
+                <p class="text-gray-600 dark:text-white/80 leading-relaxed">{{ projectDetails[selectedProject].description }}</p>
+            </div>
+
+            <!-- Key Features -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-4 font-Ovo">Key Features</h3>
+                <ul class="space-y-3">
+                    <li *ngFor="let feature of projectDetails[selectedProject].features" class="flex items-start gap-3">
+                        <div class="w-6 h-6 rounded-full bg-gradient-to-r from-[#b820e6] to-[#da7d20] flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <span class="text-gray-600 dark:text-white/80">{{ feature }}</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex gap-4">
+                <a [href]="projectDetails[selectedProject].liveUrl" target="_blank" class="flex-1 py-3 px-6 bg-gradient-to-r from-[#b820e6] to-[#da7d20] text-white rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                    View Live Demo
+                </a>
+                <a [href]="projectDetails[selectedProject].githubUrl" target="_blank" class="flex-1 py-3 px-6 border-2 border-gray-300 dark:border-white/30 text-gray-700 dark:text-white rounded-lg font-semibold hover:bg-gray-100 dark:hover:bg-darkHover transition-all duration-300 flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    View Source Code
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
     <!-- Contact me section -->
     <div id="contact"
