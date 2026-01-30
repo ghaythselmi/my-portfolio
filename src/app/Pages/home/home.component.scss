@@ -1,0 +1,24 @@
+/* Additional styles for Education Timeline - Add this to your existing CSS */
+
+/* Ping animation for timeline dots */
+@keyframes ping {
+    75%, 100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+  
+  .animate-ping {
+    animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  
+  /* Slow spin animation (already in your file, but including for completeness) */
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .animate-spin_slow {
+    animation: spin 6s linear infinite;
+  }
