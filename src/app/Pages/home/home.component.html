@@ -456,35 +456,106 @@
     </div>
 </div>
 
-    <!-- Contact me section -->
-    <div id="contact"
-        class="w-full px-[12%] py-10 scroll-mt-20 bg-[url('assets/footer-bg-color.png')] bg-no-repeat bg-[length:90%_auto] bg-center dark:bg-none">
-        <h4 class="text-center mb-2 text-lg font-Ovo">Connect with me</h4>
-        <h2 class="text-center text-5xl font-Ovo">Get in touch</h2>
-        <p class="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo">I'd love to hear from you! If you have any
-            questions, comments or feedback, please use the form below.
+<!-- Contact me section -->
+<div id="contact" class="w-full px-[12%] py-20 scroll-mt-20 bg-[url('assets/footer-bg-color.png')] bg-no-repeat bg-[length:90%_auto] bg-center dark:bg-none relative overflow-hidden">
+    <!-- Decorative Elements -->
+    <div class="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-[#b820e6]/10 to-transparent rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 right-10 w-40 h-40 bg-gradient-to-tl from-[#da7d20]/10 to-transparent rounded-full blur-3xl"></div>
+    
+    <div class="relative z-10">
+        <h2 class="text-center text-5xl font-Ovo mb-4">Let's Build Something Amazing</h2>
+        <p class="text-center max-w-2xl mx-auto mt-5 mb-16 font-Ovo text-gray-600 dark:text-white/80">
+            Open to new opportunities, collaborations, and exciting projects. Feel free to reach out through any of these channels!
         </p>
-        <form class="max-w-2xl mx-auto">
-            <input type="hidden" name="subject" value="Ghayth Selmi - New form Submission">
-            <div class="grid grid-cols-auto gap-6 mt-10 mb-8">
-                <input type="text" placeholder="Enter your name"
-                    class="flex-1 px-3 py-2 focus:ring-1 outline-none border border-gray-300 dark:border-white/30 rounded-md bg-white dark:bg-darkHover/30"
-                     required="" name="name">
-                <input type="email" placeholder="Enter your email" 
-                    class="flex-1 px-3 py-2 focus:ring-1 outline-none border border-gray-300 dark:border-white/30 rounded-md bg-white dark:bg-darkHover/30"
-                    required="" name="email">
+
+        <!-- Contact Cards Container -->
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            
+            <!-- Email Card -->
+            <div class="group relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-[#b820e6] to-[#da7d20] rounded-2xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <a href="mailto:ghaith.selmi1905@gmail.com" class="relative block p-8 bg-white dark:bg-darkHover/50 border border-gray-300 dark:border-white/30 rounded-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden">
+                    <!-- Icon Background -->
+                    <div class="absolute -right-4 -top-4 w-24 h-24 bg-gradient-to-br from-[#b820e6]/10 to-[#da7d20]/10 rounded-full transform group-hover:scale-150 transition-transform duration-700"></div>
+                    
+                    <div class="relative">
+                        <!-- Animated Icon -->
+                        <div class="w-16 h-16 mb-4 bg-gradient-to-r from-[#b820e6] to-[#da7d20] rounded-xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-500">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        
+                        <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-2 font-Ovo">Email</h3>
+                        <p class="text-gray-600 dark:text-white/70 text-sm mb-3">Drop me a line anytime</p>
+                        <p class="text-gray-700 dark:text-white font-semibold text-sm flex items-center gap-2">
+                            ghaith.selmi1905@gmail.com
+                            <svg class="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                            </svg>
+                        </p>
+                    </div>
+                </a>
             </div>
-            <textarea rows="6" placeholder="Enter your message"
-                class="w-full px-4 py-2 focus:ring-1 outline-none border border-gray-300 dark:border-white/30 rounded-md bg-white mb-6 dark:bg-darkHover/30"
-                required="" name="message"></textarea>
-            <button type="submit"
-                class="py-2 px-8 w-max flex items-center justify-between gap-2 bg-black/80 text-white rounded-full mx-auto hover:bg-black duration-500 dark:bg-transparent dark:border dark:border-white/30 dark:hover:bg-darkHover">
-                Submit now
-                <img src="assets/right-arrow-white.png" alt="" class="w-4">
-            </button>
-            <p class="mt-4"></p>
-        </form>
+
+            <!-- LinkedIn Card -->
+            <div class="group relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-[#b820e6] to-[#da7d20] rounded-2xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <a href="https://www.linkedin.com/in/selmi-ghaith-675a12240" target="_blank" rel="noopener noreferrer" class="relative block p-8 bg-white dark:bg-darkHover/50 border border-gray-300 dark:border-white/30 rounded-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden">
+                    <!-- Icon Background -->
+                    <div class="absolute -right-4 -top-4 w-24 h-24 bg-gradient-to-br from-[#b820e6]/10 to-[#da7d20]/10 rounded-full transform group-hover:scale-150 transition-transform duration-700"></div>
+                    
+                    <div class="relative">
+                        <!-- Animated Icon -->
+                        <div class="w-16 h-16 mb-4 bg-gradient-to-r from-[#b820e6] to-[#da7d20] rounded-xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-500">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
+                            </svg>
+                        </div>
+                        
+                        <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-2 font-Ovo">LinkedIn</h3>
+                        <p class="text-gray-600 dark:text-white/70 text-sm mb-3">Let's connect professionally</p>
+                        <p class="text-gray-700 dark:text-white font-semibold text-sm flex items-center gap-2">
+                            View Profile
+                            <svg class="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                            </svg>
+                        </p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- GitHub Card -->
+            <div class="group relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-[#b820e6] to-[#da7d20] rounded-2xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <a href="https://github.com/ghaythselmi" target="_blank" rel="noopener noreferrer" class="relative block p-8 bg-white dark:bg-darkHover/50 border border-gray-300 dark:border-white/30 rounded-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden">
+                    <!-- Icon Background -->
+                    <div class="absolute -right-4 -top-4 w-24 h-24 bg-gradient-to-br from-[#b820e6]/10 to-[#da7d20]/10 rounded-full transform group-hover:scale-150 transition-transform duration-700"></div>
+                    
+                    <div class="relative">
+                        <!-- Animated Icon -->
+                        <div class="w-16 h-16 mb-4 bg-gradient-to-r from-[#b820e6] to-[#da7d20] rounded-xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-500">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </div>
+                        
+                        <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-2 font-Ovo">GitHub</h3>
+                        <p class="text-gray-600 dark:text-white/70 text-sm mb-3">Check out my repositories</p>
+                        <p class="text-gray-700 dark:text-white font-semibold text-sm flex items-center gap-2">
+                            View Projects
+                            <svg class="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                            </svg>
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+     
     </div>
+</div>
 
     <!-- Footer -->
     <div class="mt-20">
@@ -493,18 +564,13 @@
                 <img src="assets/logo.png" alt="" class="w-36 mx-auto mb-2 dark:hidden">
                 <img src="assets/logo_dark.png" alt="" class="w-36 mx-auto mb-2 hidden dark:block">
             </a>
-            <div class="w-max flex items-center gap-2 mx-auto">
-                <img src="assets/mail_icon.png" alt="" class="w-5 dark:hidden">
-                <img src="assets/mail_icon_dark.png" alt="" class="w-5 hidden dark:block">
-                <a href="#!">ghaith.selmi1905@gmail.com</a>
-            </div>
+
         </div>
         <div class="text-center sm:flex items-center justify-between border-t border-gray-400 mx-[10%] mt-12 py-3">
-            <p>© 2025 <a href="https://prebuiltui.com/" target="_blank">PrebuiltUI</a>. All rights reserved. Distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a></p> 
+            <p>© 2026 <a href="https://prebuiltui.com/" target="_blank">GHAYTH</a>.SELMI</p> 
             <ul class="flex items-center gap-10 justify-center mt-4 sm:mt-0">
-                <li><a target="_blank" href="#!">GitHub</a></li>
-                <li><a target="_blank" href="#!">LinkedIn</a></li>
-                <li><a target="_blank" href="#!">Twitter</a></li>
+                <li><a target="_blank" href="https://github.com/ghaythselmi">GitHub</a></li>
+                <li><a target="_blank" href="https://www.linkedin.com/in/selmi-ghaith-675a12240/">LinkedIn</a></li>
             </ul>
         </div>
     </div>

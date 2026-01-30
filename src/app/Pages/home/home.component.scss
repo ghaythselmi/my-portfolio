@@ -180,3 +180,156 @@
       transition-duration: 0.01ms !important;
     }
   }
+
+  /* Contact Section Specific CSS - Isolated styles only for #contact */
+
+/* Gradient text clip utility for contact section */
+#contact .bg-clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  
+  #contact .text-transparent {
+    color: transparent;
+  }
+  
+  /* Pulse animation for status indicator in contact section */
+  @keyframes contact-pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  #contact .animate-pulse {
+    animation: contact-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  /* Blur effect for decorative elements in contact section */
+  #contact .blur-3xl {
+    filter: blur(64px);
+  }
+  
+  /* Enhanced glow effect on hover for contact cards */
+  #contact .group:hover .absolute.inset-0 {
+    animation: contact-glow 1.5s ease-in-out infinite alternate;
+  }
+  
+  @keyframes contact-glow {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Contact section specific shadow */
+  #contact a:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .dark #contact a:hover {
+    box-shadow: 0 10px 15px -3px rgba(184, 32, 230, 0.3), 0 4px 6px -2px rgba(218, 125, 32, 0.2);
+  }
+  
+  /* Contact cards hover lift effect */
+  #contact .group:hover {
+    transform: translateY(-0.5rem);
+  }
+  
+  /* Rotating icon effect for contact cards */
+  #contact .group:hover .transform {
+    transform: rotate(12deg);
+  }
+  
+  /* Arrow slide animation in contact section */
+  #contact .group:hover svg:last-child {
+    transform: translateX(0.5rem);
+  }
+  
+  /* Scale animation for background circles in contact */
+  #contact .group:hover .group-hover\:scale-150 {
+    transform: scale(1.5);
+  }
+  
+  /* Platform icons hover effect in contact section */
+  #contact .group:hover svg {
+    filter: drop-shadow(0 4px 6px rgba(184, 32, 230, 0.3));
+  }
+  
+  /* Contact section responsive adjustments */
+  @media (max-width: 768px) {
+    #contact .grid-cols-1.md\:grid-cols-3 {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+  
+  /* Contact section link transitions */
+  #contact a,
+  #contact button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Contact section focus states */
+  #contact a:focus-visible {
+    outline: 2px solid #b820e6;
+    outline-offset: 4px;
+    border-radius: 1rem;
+  }
+  
+  /* Staggered animation for contact cards */
+  #contact .grid > div:nth-child(1) {
+    animation-delay: 0s;
+  }
+  
+  #contact .grid > div:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  
+  #contact .grid > div:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  
+  /* Loading state effect for contact links */
+  #contact a {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  #contact a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  #contact a:hover::before {
+    left: 100%;
+  }
+  
+  /* Social platform badge specific hover effects */
+  #contact .flex.items-center.gap-3:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dark #contact .flex.items-center.gap-3:hover {
+    box-shadow: 0 8px 16px rgba(184, 32, 230, 0.2);
+  }
+  
+  /* Reduced motion for contact section */
+  @media (prefers-reduced-motion: reduce) {
+    #contact .group:hover .transform,
+    #contact .group:hover,
+    #contact a::before {
+      transition: none;
+      animation: none;
+    }
+  }
