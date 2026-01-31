@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 interface ProjectDetail {
   title: string;
@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   isDarkMode = false;
   isMobileMenuOpen = false;
   selectedProject: string | null = null;
+  isScrolled = false;
 
   projectDetails: { [key: string]: ProjectDetail } = {
     spofuncoach: {
@@ -113,6 +114,13 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  // Listen to scroll events
+  @HostListener('window:scroll', [])
+  onWindowScroll(): void {
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    this.isScrolled = scrollPosition > 50;
+  }
+
   toggleTheme(): void {
     this.isDarkMode = !this.isDarkMode;
     if (this.isDarkMode) {
@@ -126,10 +134,18 @@ export class HomeComponent implements OnInit {
 
   openMenu(): void {
     this.isMobileMenuOpen = true;
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenu) {
+      mobileMenu.style.right = '0';
+    }
   }
 
   closeMenu(): void {
     this.isMobileMenuOpen = false;
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenu) {
+      mobileMenu.style.right = '-16rem';
+    }
   }
 
   scrollTo(section: string): void {
@@ -148,5 +164,15 @@ export class HomeComponent implements OnInit {
     this.selectedProject = null;
     // Re-enable body scroll
     document.body.style.overflow = 'auto';
+  }
+
+  downloadCV(): void {
+    // Create a temporary anchor element to trigger download
+    const link = document.createElement('a');
+    link.href = 'assets/_CV Ghayth Selmi .pdf'; // Make sure this path points to your actual CV file
+    link.download = 'Ghayth_Selmi_CV.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 }

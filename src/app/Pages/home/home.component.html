@@ -1,19 +1,25 @@
-
 <div class="font-Outfit leading-8 dark:bg-darkTheme dark:text-white">
-    <div class="fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] dark:hidden">
-        <img src="assets/header-bg-color.png" alt="" class="w-full" />
-    </div>
 
-    <nav id="navbar" class="w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50">
-        <p class="bg-white bg-opacity-50 backdrop-blur-lg shadow-sm dark:bg-darkTheme dark:shadow-white/20 sr-only">
-            Hidden</p>
-        <a href="#!">
+
+    <!-- Updated navbar with scroll behavior -->
+    <nav id="navbar" 
+         class="w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 transition-all duration-500"
+         [class.opacity-0]="isScrolled"
+         [class.scale-0]="isScrolled"
+         [class.pointer-events-none]="isScrolled">
+        
+        <!-- Logo with scroll fade effect -->
+        <a href="#!" [class.opacity-0]="isScrolled" [class.scale-0]="isScrolled" class="transition-all duration-500">
             <img src="assets/logo.png" alt="Logo" class="w-28 cursor-pointer mr-14 dark:hidden" />
             <img src="assets/logo_dark.png" alt="Logo" class="w-28 cursor-pointer mr-14 hidden dark:block" />
         </a>
 
+        <!-- Desktop Navigation with scroll hide effect -->
         <ul id="navLink"
-            class="hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 bg-white shadow-sm bg-opacity-50 font-Ovo dark:border dark:border-white/30 dark:bg-transparent ">
+            class="hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 bg-white shadow-sm bg-opacity-50 font-Ovo dark:border dark:border-white/30 dark:bg-transparent transition-all duration-500"
+            [class.opacity-0]="isScrolled"
+            [class.scale-0]="isScrolled"
+            [class.pointer-events-none]="isScrolled">
             <li><a class='hover:text-gray-500 dark:hover:text-gray-300 transition' href="#top">Home</a></li>
             <li><a class='hover:text-gray-500 dark:hover:text-gray-300 transition' href="#about">About me</a></li>
             <li><a class='hover:text-gray-500 dark:hover:text-gray-300 transition' href="#services">Services</a></li>
@@ -22,40 +28,43 @@
         </ul>
 
         <div class="flex items-center gap-4">
-            <button (click)="toggleTheme()">
+            <!-- Theme toggle button with scroll fade effect -->
+            <button (click)="toggleTheme()" 
+                    class="transition-all duration-500"
+                    [class.opacity-0]="isScrolled"
+                    [class.scale-0]="isScrolled"
+                    [class.pointer-events-none]="isScrolled">
                 <img src="assets/moon_icon.png" alt="" class="w-5 dark:hidden" />
                 <img src="assets/sun_icon.png" alt="" class="w-5 hidden dark:block" />
             </button>
 
+            <!-- Contact button with scroll fade effect -->
             <a href="#contact"
-                class="hidden lg:flex items-center gap-3 px-8 py-1.5 border border-gray-300 hover:bg-slate-100/70 dark:hover:bg-darkHover rounded-full ml-4 font-Ovo dark:border-white/30">
+                class="hidden lg:flex items-center gap-3 px-8 py-1.5 border border-gray-300 hover:bg-slate-100/70 dark:hover:bg-darkHover rounded-full ml-4 font-Ovo dark:border-white/30 transition-all duration-500"
+                [class.opacity-0]="isScrolled"
+                [class.scale-0]="isScrolled"
+                [class.pointer-events-none]="isScrolled">
                 Contact
                 <img src="assets/arrow-icon.png" alt="" class="w-3 dark:hidden" />
                 <img src="assets/arrow-icon-dark.png" alt="" class="w-3 hidden dark:block" />
             </a>
-
-            <button class="block md:hidden ml-3" (click)="openMenu()">
-                <img src="assets/menu-black.png" alt="" class="w-6 dark:hidden" />
-                <img src="assets/menu-white.png" alt="" class="w-6 hidden dark:block" />
-            </button>
-
         </div>
-        <!-- ----- mobile menu ------ -->
-        <ul id="mobileMenu"
-            class="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500 font-Ovo dark:bg-darkHover dark:text-white">
 
-            <div class="absolute right-6 top-6" (click)="closeMenu()">
-                <img src="assets/close-black.png" alt="" class="w-5 cursor-pointer dark:hidden" />
-                <img src="assets/close-white.png" alt="" class="w-5 cursor-pointer hidden dark:block" />
-            </div>
 
-            <li><a href="#top" (click)="closeMenu()">Home</a></li>
-            <li><a href="#about" (click)="closeMenu()">About me</a></li>
-            <li><a href="#services" (click)="closeMenu()">Services</a></li>
-            <li><a href="#work" (click)="closeMenu()">My Work</a></li>
-            <li><a href="#contact" (click)="closeMenu()">Contact me</a></li>
-        </ul>
+
+
+
     </nav>
+
+     <!-- Floating Theme Toggle Button (appears on scroll) -->
+     <button (click)="toggleTheme()" 
+     class="fixed bottom-8 right-8 w-14 h-14 rounded-full bg-white dark:bg-darkHover shadow-lg border border-gray-300 dark:border-white/30 flex items-center justify-center z-50 transition-all duration-500 hover:scale-110 hover:shadow-xl"
+     [class.opacity-0]="!isScrolled"
+     [class.scale-0]="!isScrolled"
+     [class.pointer-events-none]="!isScrolled">
+ <img src="assets/moon_icon.png" alt="Toggle Dark Mode" class="w-6 dark:hidden" />
+ <img src="assets/sun_icon.png" alt="Toggle Light Mode" class="w-6 hidden dark:block" />
+</button>
 
     <!-- ----- home section ------ -->
     <div class="w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col items-center justify-center gap-4">
@@ -73,10 +82,11 @@
                 contact me <img src="assets/right-arrow-white.png" alt="" class="w-4" />
             </a>
 
-            <a href="assets/dev-icon.png" download
-                class="px-10 py-2.5 rounded-full border border-gray-300 dark:border-white/25 hover:bg-slate-100/70 dark:hover:bg-darkHover flex items-center gap-2 bg-white dark:bg-transparent dark:text-white">
+            <!-- Updated CV download button -->
+            <button (click)="downloadCV()"
+                class="px-10 py-2.5 rounded-full border border-gray-300 dark:border-white/25 hover:bg-slate-100/70 dark:hover:bg-darkHover flex items-center gap-2 bg-white dark:bg-transparent dark:text-white transition-all duration-300">
                 my resume <img src="assets/download-icon.png" alt="" class="w-4 dark:invert" />
-            </a>
+            </button>
         </div>
     </div>
 
@@ -189,29 +199,7 @@
                 </li>   
 
                 </ul>
-                <h4 class="my-6 text-gray-700 font-Ovo dark:text-white/80">Tools i use</h4>
-                <ul class="flex items-center gap-3 sm:gap-5">
-                    <li
-                        class="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-300 dark:border-white/30 rounded-lg cursor-pointer hover:-translate-y-1 duration-500">
-                        <img src="assets/vscode.png" alt="vscode" class="w-5 sm:w-7">
-                    </li>
-                    <li
-                        class="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-300 dark:border-white/30 rounded-lg cursor-pointer hover:-translate-y-1 duration-500">
-                        <img src="assets/firebase.png" alt="firebase" class="w-5 sm:w-7">
-                    </li>
-                    <li
-                        class="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-300 dark:border-white/30 rounded-lg cursor-pointer hover:-translate-y-1 duration-500">
-                        <img src="assets/mongodb.png" alt="mongodb" class="w-5 sm:w-7">
-                    </li>
-                    <li
-                        class="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-300 dark:border-white/30 rounded-lg cursor-pointer hover:-translate-y-1 duration-500">
-                        <img src="assets/figma.png" alt="figma" class="w-5 sm:w-7">
-                    </li>
-                    <li
-                        class="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-300 dark:border-white/30 rounded-lg cursor-pointer hover:-translate-y-1 duration-500">
-                        <img src="assets/git.png" alt="git" class="w-5 sm:w-7">
-                    </li>
-                </ul>
+             
             </div>
         </div>
     </div>
@@ -374,10 +362,6 @@
         </div>
     </div>
 
-    <a href="#"
-        class="w-max flex items-center justify-center gap-2 text-gray-700 border border-gray-300 dark:border-white/25 hover:bg-slate-100/70 dark:hover:bg-darkHover rounded-full py-2 px-8 mx-auto my-20 duration-300 dark:text-white">Show
-        more<img src="assets/right-arrow-bold.png" alt="" class="w-4 dark:hidden"><img
-            src="assets/right-arrow-bold-dark.png" alt="" class="w-4 hidden dark:block"></a>
 </div>
 
 <!-- Project Details Modal -->
@@ -576,4 +560,3 @@
     </div>
 
 </div>
-
