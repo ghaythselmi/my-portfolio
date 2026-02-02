@@ -1444,3 +1444,12 @@ video {
   --tw-shadow-color: rgb(255 255 255 / 0.8);
   --tw-shadow: var(--tw-shadow-colored);
 }
+
+@keyframes float-test {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-20px); }
+}
+
+.test-float {
+  animation: float-test 2s infinite alternate;
+}

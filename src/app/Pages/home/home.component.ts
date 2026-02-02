@@ -112,6 +112,9 @@ export class HomeComponent implements OnInit {
       this.isDarkMode = true;
       document.documentElement.classList.add('dark');
     }
+
+    this.setupFooterObserver();
+    this.initFooterParticles()
   }
 
   // Listen to scroll events
@@ -174,5 +177,46 @@ export class HomeComponent implements OnInit {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  }
+
+  private setupFooterObserver(): void {
+    const footerElement = document.querySelector('footer');
+    
+    if (footerElement) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              // Footer is visible - you can trigger analytics here
+              console.log('Footer viewed');
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+      
+      observer.observe(footerElement);
+    }
+  }
+
+  private initFooterParticles(): void {
+    const footer = document.querySelector('footer');
+    
+    if (footer) {
+      footer.addEventListener('mouseenter', () => {
+        // Add extra animation class for enhanced effect
+        footer.classList.add('footer-active');
+      });
+      
+      footer.addEventListener('mouseleave', () => {
+        footer.classList.remove('footer-active');
+      });
+    }
+  }
+  scrollToTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 }

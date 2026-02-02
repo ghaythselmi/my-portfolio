@@ -547,29 +547,179 @@
             </div>
         </div>
 
-        <!-- Footer -->
-        <div class="mt-20 relative">
-            <!-- BG3 Overlay for Footer -->
-            <div class="absolute inset-0 pointer-events-none opacity-5 dark:opacity-10 z-0">
-                <img src="assets/bg3.jpg" alt="" class="w-full h-full object-cover" />
+<!-- Modern IT/DevOps Footer -->
+<footer class="relative mt-20 overflow-hidden border-t border-gray-200 dark:border-white/10">
+    <!-- Animated Background Elements Container -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" id="floating-container">
+        <!-- Floating Code Brackets -->
+        <div class="floating-element bracket-1 absolute text-4xl font-mono text-[#b820e6]/30 dark:text-[#b820e6]/40">&lt;/&gt;</div>
+        <div class="floating-element bracket-2 absolute text-3xl font-mono text-[#da7d20]/30 dark:text-[#da7d20]/40">&#123; &#125;</div>
+        <div class="floating-element bracket-3 absolute text-2xl font-mono text-[#b820e6]/25 dark:text-[#b820e6]/35">[ ]</div>
+        
+        <!-- Docker/Container Icons -->
+        <div class="floating-element docker-1 absolute">
+            <svg class="w-8 h-8 text-[#da7d20]/30 dark:text-[#da7d20]/40" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185"/>
+            </svg>
+        </div>
+        <div class="floating-element docker-2 absolute">
+            <svg class="w-6 h-6 text-[#b820e6]/25 dark:text-[#b820e6]/35" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185"/>
+            </svg>
+        </div>
+        
+        <!-- Git Branch Icons -->
+        <div class="floating-element git-1 absolute">
+            <svg class="w-7 h-7 text-[#da7d20]/25 dark:text-[#da7d20]/35" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <circle cx="6" cy="6" r="3" stroke-width="2"/>
+                <circle cx="6" cy="18" r="3" stroke-width="2"/>
+                <circle cx="18" cy="6" r="3" stroke-width="2"/>
+                <path d="M6 9v6M9 6h6" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </div>
+        <div class="floating-element git-2 absolute">
+            <svg class="w-6 h-6 text-[#b820e6]/30 dark:text-[#b820e6]/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <circle cx="6" cy="6" r="3" stroke-width="2"/>
+                <circle cx="6" cy="18" r="3" stroke-width="2"/>
+                <circle cx="18" cy="6" r="3" stroke-width="2"/>
+                <path d="M6 9v6M9 6h6" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </div>
+        
+        <!-- Terminal Arrows -->
+        <div class="floating-element arrow-1 absolute text-2xl font-mono text-[#b820e6]/25 dark:text-[#b820e6]/35">→</div>
+        <div class="floating-element arrow-2 absolute text-xl font-mono text-[#da7d20]/25 dark:text-[#da7d20]/35">⇴</div>
+        <div class="floating-element arrow-3 absolute text-2xl font-mono text-[#b820e6]/30 dark:text-[#b820e6]/40">➔</div>
+        
+        <!-- Cloud Icons -->
+        <div class="floating-element cloud-1 absolute">
+            <svg class="w-10 h-10 text-[#da7d20]/20 dark:text-[#da7d20]/30" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19.35 10.04A7.49 7.49 0 0012 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 000 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
+            </svg>
+        </div>
+        <div class="floating-element cloud-2 absolute">
+            <svg class="w-8 h-8 text-[#b820e6]/25 dark:text-[#b820e6]/35" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19.35 10.04A7.49 7.49 0 0012 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 000 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
+            </svg>
+        </div>
+        
+        <!-- Terminal Prompt -->
+        <div class="floating-element prompt-1 absolute text-xl font-mono text-[#da7d20]/25 dark:text-[#da7d20]/35">$_</div>
+        <div class="floating-element prompt-2 absolute text-lg font-mono text-[#b820e6]/20 dark:text-[#b820e6]/30">#_</div>
+    </div>
+    
+    <!-- Footer Content -->
+    <div class="relative z-20 px-[12%] py-12 bg-white/90 dark:bg-darkTheme/90">
+        <!-- Main Footer Content -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <!-- Logo & Description Column -->
+            <div class="space-y-4">
+                <a href="#top" class="inline-block">
+                    <img src="assets/logo.png" alt="Logo" class="w-32 dark:hidden" />
+                    <img src="assets/logo_dark.png" alt="Logo" class="w-32 hidden dark:block" />
+                </a>
+                <p class="text-sm text-gray-600 dark:text-white/70 font-Ovo leading-relaxed max-w-xs">
+                    Building scalable solutions with modern web technologies and DevOps practices.
+                </p>
+                <!-- Tech Stack Badges -->
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 text-xs bg-[#b820e6]/10 dark:bg-[#b820e6]/20 text-[#b820e6] dark:text-[#b820e6] rounded border border-[#b820e6]/20 dark:border-[#b820e6]/30">Full-Stack</span>
+                    <span class="px-2 py-1 text-xs bg-[#da7d20]/10 dark:bg-[#da7d20]/20 text-[#da7d20] dark:text-[#da7d20] rounded border border-[#da7d20]/20 dark:border-[#da7d20]/30">DevOps</span>
+                    <span class="px-2 py-1 text-xs bg-[#b820e6]/10 dark:bg-[#b820e6]/20 text-[#b820e6] dark:text-[#b820e6] rounded border border-[#b820e6]/20 dark:border-[#b820e6]/30">Cloud</span>
+                </div>
             </div>
             
-            <div class="relative z-10">
-                <div class="text-center">
-                    <a href="#top">
-                        <img src="assets/logo.png" alt="" class="w-36 mx-auto mb-2 dark:hidden">
-                        <img src="assets/logo_dark.png" alt="" class="w-36 mx-auto mb-2 hidden dark:block">
+            <!-- Quick Links Column -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-gray-700 dark:text-white font-Ovo">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#top" class="text-sm text-gray-600 dark:text-white/70 hover:text-[#b820e6] dark:hover:text-[#b820e6] transition-colors duration-300 flex items-center gap-2 group">
+                            <span class="w-1.5 h-1.5 bg-[#b820e6] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#about" class="text-sm text-gray-600 dark:text-white/70 hover:text-[#b820e6] dark:hover:text-[#b820e6] transition-colors duration-300 flex items-center gap-2 group">
+                            <span class="w-1.5 h-1.5 bg-[#b820e6] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            About
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#work" class="text-sm text-gray-600 dark:text-white/70 hover:text-[#b820e6] dark:hover:text-[#b820e6] transition-colors duration-300 flex items-center gap-2 group">
+                            <span class="w-1.5 h-1.5 bg-[#b820e6] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            Projects
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="text-sm text-gray-600 dark:text-white/70 hover:text-[#b820e6] dark:hover:text-[#b820e6] transition-colors duration-300 flex items-center gap-2 group">
+                            <span class="w-1.5 h-1.5 bg-[#b820e6] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Connect Column -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-gray-700 dark:text-white font-Ovo">Connect</h3>
+                <div class="space-y-3">
+                    <!-- GitHub -->
+                    <a href="https://github.com/ghaythselmi" target="_blank" rel="noopener noreferrer" 
+                       class="flex items-center gap-3 text-sm text-gray-600 dark:text-white/70 hover:text-[#b820e6] dark:hover:text-[#b820e6] transition-all duration-300 group">
+                        <div class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-darkHover flex items-center justify-center group-hover:bg-[#b820e6]/10 dark:group-hover:bg-[#b820e6]/20 transition-colors duration-300">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </div>
+                        <span>GitHub</span>
                     </a>
-                </div>
-                <div class="text-center sm:flex items-center justify-between border-t border-gray-400 mx-[10%] mt-12 py-3">
-                    <p>© 2026 GHAYTH.SELMI</p> 
-                    <ul class="flex items-center gap-10 justify-center mt-4 sm:mt-0">
-                        <li><a target="_blank" href="https://github.com/ghaythselmi">GitHub</a></li>
-                        <li><a target="_blank" href="https://www.linkedin.com/in/selmi-ghaith-675a12240/">LinkedIn</a></li>
-                    </ul>
+                    
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/selmi-ghaith-675a12240" target="_blank" rel="noopener noreferrer"
+                       class="flex items-center gap-3 text-sm text-gray-600 dark:text-white/70 hover:text-[#b820e6] dark:hover:text-[#b820e6] transition-all duration-300 group">
+                        <div class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-darkHover flex items-center justify-center group-hover:bg-[#b820e6]/10 dark:group-hover:bg-[#b820e6]/20 transition-colors duration-300">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
+                            </svg>
+                        </div>
+                        <span>LinkedIn</span>
+                    </a>
+                    
+                    <!-- Email -->
+                    <a href="mailto:ghaith.selmi1905@gmail.com"
+                       class="flex items-center gap-3 text-sm text-gray-600 dark:text-white/70 hover:text-[#b820e6] dark:hover:text-[#b820e6] transition-all duration-300 group">
+                        <div class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-darkHover flex items-center justify-center group-hover:bg-[#b820e6]/10 dark:group-hover:bg-[#b820e6]/20 transition-colors duration-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <span>Email</span>
+                    </a>
                 </div>
             </div>
         </div>
+        
+        <!-- Bottom Bar -->
+        <div class="pt-8 border-t border-gray-200 dark:border-white/10">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <!-- Copyright -->
+                <p class="text-sm text-gray-600 dark:text-white/70 font-Ovo">
+                    &copy; 2026 Ghayth Selmi. All rights reserved.
+                </p>
+                
+                <!-- Terminal-style status indicator -->
+                <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-white/50 font-mono">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    <span>System Online</span>
+                    <span class="hidden sm:inline">|</span>
+                    <span class="hidden sm:inline">Build v1.0.0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
+        
     </div> <!-- End of main content wrapper -->
 </div>
