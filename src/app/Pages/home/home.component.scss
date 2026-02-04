@@ -1,4 +1,3 @@
-/* Additional styles for Education Timeline */
 @keyframes ping {
   75%, 100% {
     transform: scale(2);
@@ -20,7 +19,6 @@
   animation: spin 6s linear infinite;
 }
 
-/* Additional CSS for Project Cards and Modal */
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -162,7 +160,6 @@ img:not([src]) {
   }
 }
 
-/* Contact Section Specific CSS */
 #contact .bg-clip-text {
   -webkit-background-clip: text;
   background-clip: text;
@@ -297,12 +294,6 @@ img:not([src]) {
   }
 }
 
-/* ========================================
-   PURPLE GRADIENT THEME - TOP TO BOTTOM
-   Custom Dark Color: #0B0613 with Purple Gradients
-   ======================================== */
-
-/* Base container for background images */
 .section-bg {
   position: absolute;
   inset: 0;
@@ -311,7 +302,6 @@ img:not([src]) {
   overflow: hidden;
 }
 
-/* Base image styling - LIGHT MODE */
 .section-bg img {
   width: 100%;
   height: 100%;
@@ -322,13 +312,11 @@ img:not([src]) {
   transition: opacity 0.5s ease, filter 0.5s ease;
 }
 
-/* DARK MODE - Make images MORE visible with purple tint */
 .dark .section-bg img {
   opacity: 0.45 !important;
   filter: brightness(0.7) contrast(1.3) saturate(1.1) hue-rotate(15deg) !important;
 }
 
-/* Light mode gradient overlay - Stronger to hide image more */
 .section-bg .bg-gradient-to-b:not(.dark\:bg-gradient-to-b) {
   background: linear-gradient(
     to bottom,
@@ -369,13 +357,11 @@ img:not([src]) {
   ) !important;
 }
 
-/* Ensure content stays on top */
 .relative.z-10 {
   position: relative;
   z-index: 10;
 }
 
-/* Mobile optimization */
 @media (max-width: 768px) {
   .section-bg img {
     opacity: 0.1;
@@ -385,7 +371,6 @@ img:not([src]) {
     opacity: 0.35 !important;
   }
 
-  /* Stronger fade on mobile for better readability */
   .section-bg .bg-gradient-to-b:not(.dark\:bg-gradient-to-b) {
     background: linear-gradient(
       to bottom,
@@ -486,7 +471,6 @@ img:not([src]) {
   }
 }
 
-/* Hexagon pattern overlay - Purple gradient theme */
 #education .relative.z-10::before,
 #about .relative.z-10::before,
 #work .relative.z-10::before {
@@ -519,7 +503,6 @@ img:not([src]) {
   opacity: 0.8;
 }
 
-/* Add subtle animated border glow to sections */
 #education,
 #about,
 #work,
@@ -528,7 +511,6 @@ img:not([src]) {
   overflow: hidden;
 }
 
-/* Smooth transitions between theme switches */
 .section-bg,
 .section-bg img,
 .section-bg > div {
@@ -558,205 +540,7 @@ footer {
   );
 }
 
-/* Floating Elements Animations */
-.floating-element {
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  will-change: transform;
-}
-
-/* Code Brackets */
-.bracket-1 {
-  top: 10%;
-  left: 5%;
-  animation: float-diagonal 18s infinite;
-}
-
-.bracket-2 {
-  top: 50%;
-  right: 8%;
-  animation: float-vertical 15s infinite;
-  animation-delay: -3s;
-}
-
-.bracket-3 {
-  bottom: 15%;
-  left: 10%;
-  animation: float-horizontal 20s infinite;
-  animation-delay: -5s;
-}
-
-/* Docker/Container Icons */
-.docker-1 {
-  top: 30%;
-  right: 15%;
-  animation: float-rotate 25s infinite;
-}
-
-.docker-2 {
-  bottom: 25%;
-  right: 5%;
-  animation: float-diagonal 22s infinite;
-  animation-delay: -7s;
-}
-
-/* Git Branch Icons */
-.git-1 {
-  top: 20%;
-  right: 30%;
-  animation: float-pulse 16s infinite;
-}
-
-.git-2 {
-  bottom: 35%;
-  left: 20%;
-  animation: float-pulse 19s infinite;
-  animation-delay: -4s;
-}
-
-/* Terminal Arrows */
-.arrow-1 {
-  top: 60%;
-  left: 30%;
-  animation: float-horizontal 14s infinite;
-}
-
-.arrow-2 {
-  top: 25%;
-  left: 50%;
-  animation: float-diagonal 17s infinite;
-  animation-delay: -2s;
-}
-
-.arrow-3 {
-  bottom: 10%;
-  right: 35%;
-  animation: float-vertical 16s infinite;
-  animation-delay: -6s;
-}
-
-/* Cloud Icons */
-.cloud-1 {
-  top: 40%;
-  left: 3%;
-  animation: float-slow 30s infinite;
-}
-
-.cloud-2 {
-  top: 5%;
-  right: 20%;
-  animation: float-slow 28s infinite;
-  animation-delay: -10s;
-}
-
-/* Terminal Prompts */
-.prompt-1 {
-  bottom: 45%;
-  left: 40%;
-  animation: float-blink 12s infinite;
-}
-
-.prompt-2 {
-  top: 70%;
-  right: 12%;
-  animation: float-blink 14s infinite;
-  animation-delay: -3s;
-}
-
-/* Animation Keyframes */
-@keyframes float-diagonal {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg);
-    opacity: 0.35;
-  }
-  25% {
-    transform: translate(30px, -30px) rotate(90deg);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translate(60px, 0) rotate(180deg);
-    opacity: 0.4;
-  }
-  75% {
-    transform: translate(30px, 30px) rotate(270deg);
-    opacity: 0.55;
-  }
-}
-
-@keyframes float-vertical {
-  0%, 100% {
-    transform: translateY(0) scale(1);
-    opacity: 0.35;
-  }
-  50% {
-    transform: translateY(-40px) scale(1.1);
-    opacity: 0.55;
-  }
-}
-
-@keyframes float-horizontal {
-  0%, 100% {
-    transform: translateX(0) rotate(0deg);
-    opacity: 0.35;
-  }
-  50% {
-    transform: translateX(50px) rotate(180deg);
-    opacity: 0.5;
-  }
-}
-
-@keyframes float-rotate {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg) scale(1);
-    opacity: 0.4;
-  }
-  33% {
-    transform: translate(-20px, -25px) rotate(120deg) scale(1.1);
-    opacity: 0.5;
-  }
-  66% {
-    transform: translate(20px, 15px) rotate(240deg) scale(0.95);
-    opacity: 0.55;
-  }
-}
-
-@keyframes float-pulse {
-  0%, 100% {
-    transform: scale(1) translateY(0);
-    opacity: 0.35;
-  }
-  50% {
-    transform: scale(1.15) translateY(-20px);
-    opacity: 0.55;
-  }
-}
-
-@keyframes float-slow {
-  0%, 100% {
-    transform: translateX(0);
-    opacity: 0.3;
-  }
-  50% {
-    transform: translateX(80px);
-    opacity: 0.45;
-  }
-}
-
-@keyframes float-blink {
-  0%, 100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 0.6;
-  }
-}
-
-/* Dark mode specific adjustments - Enhanced purple glow */
-.dark .floating-element {
-  filter: brightness(1.6) drop-shadow(0 0 12px rgba(150, 70, 200, 0.4));
-}
-
-/* Footer Content Styles */
+footer h3 {
 footer h3 {
   position: relative;
   display: inline-block;
@@ -777,7 +561,6 @@ footer h3::after {
   background: linear-gradient(to right, #d060ff, #f0a050);
 }
 
-/* Link Hover Effects */
 footer a:not(.inline-block) {
   position: relative;
   transition: all 0.3s ease;
@@ -798,7 +581,6 @@ footer a:not(.inline-block):hover::before {
   width: 100%;
 }
 
-/* Tech Stack Badges Animation */
 footer .flex-wrap span {
   transition: all 0.3s ease;
 }
@@ -812,7 +594,6 @@ footer .flex-wrap span:hover {
   box-shadow: 0 6px 14px rgba(150, 70, 200, 0.6);
 }
 
-/* Social Icons Hover Effect */
 footer .w-8.h-8 {
   transition: all 0.3s ease;
   position: relative;
@@ -856,7 +637,6 @@ footer .animate-pulse {
   }
 }
 
-/* Terminal Status Text Effect */
 footer .font-mono {
   position: relative;
 }
@@ -873,20 +653,12 @@ footer .font-mono::before {
   opacity: 0.9;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
-  /* Reduce floating elements on mobile */
-  .floating-element {
-    opacity: 0.5 !important;
-    transform: scale(0.8);
-  }
-  
   footer h3::after {
     width: 20px;
   }
 }
 
-/* Grid Layout Enhancement */
 footer .grid {
   position: relative;
 }
@@ -896,13 +668,11 @@ footer .grid > div {
   z-index: 1;
 }
 
-/* Backdrop Blur Enhancement */
 footer .backdrop-blur-sm {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
-/* Border Glow Effect - Enhanced purple theme */
 footer .border-t {
   position: relative;
 }
@@ -948,9 +718,7 @@ footer * {
   transition-duration: 300ms;
 }
 
-/* Performance Optimization */
 @media (prefers-reduced-motion: reduce) {
-  .floating-element {
     animation: none !important;
   }
 }
@@ -960,21 +728,16 @@ footer * {
   footer {
     border-top: 2px solid currentColor;
   }
-  
-  .floating-element {
-    display: none;
-  }
 }
 
-/* Certificate Image Container - Better Display */
 .certificate-image-container {
   position: relative;
-  height: 24rem; /* h-96 */
+  height: 24rem;
   border-radius: 1rem;
   overflow: hidden;
   margin-bottom: 2rem;
-  border: 2px solid rgb(209, 213, 219); /* border-gray-300 */
-  background: rgb(243, 244, 246); /* bg-gray-100 */
+  border: 2px solid rgb(209, 213, 219);
+  background: rgb(243, 244, 246);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -982,24 +745,22 @@ footer * {
 
 .dark .certificate-image-container {
   border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(17, 24, 39, 0.5); /* Adjust based on your darkHover color */
+  background: rgba(17, 24, 39, 0.5);
 }
 
 .certificate-image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Changed from contain to cover for full container fill */
+  object-fit: cover;
   object-position: center;
   transition: transform 0.3s ease;
 }
 
-/* Alternative: If you want to ensure entire image is visible without cropping */
 .certificate-image-container.fit-contain img {
   object-fit: contain;
-  padding: 1rem; /* Add padding to prevent edge touching */
+  padding: 1rem;
 }
 
-/* Hover effect for better UX */
 .certificate-image-container:hover img {
   transform: scale(1.02);
 }
@@ -1017,7 +778,6 @@ footer * {
   }
 }
 
-/* Loading state */
 .certificate-image-container img:not([src]),
 .certificate-image-container img[src=""] {
   opacity: 0;
