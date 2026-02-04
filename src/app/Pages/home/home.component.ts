@@ -22,87 +22,161 @@ export class HomeComponent implements OnInit {
   isMobileMenuOpen = false;
   selectedProject: string | null = null;
   isScrolled = false;
+  selectedCertificate: string | null = null;
+
 
   projectDetails: { [key: string]: ProjectDetail } = {
     spofuncoach: {
       title: 'SpofunCoach',
       subtitle: 'Full-stack Sports Coaching Platform',
-      category: 'Full-Stack Development',
-      image: 'assets/work-1.png',
-      description: 'SpofunCoach is a comprehensive sports coaching platform that connects athletes with professional coaches. The platform features real-time scheduling, progress tracking, personalized workout plans, and integrated video conferencing for remote coaching sessions. Built with a microservices architecture for scalability and reliability.',
-      technologies: ['Angular', 'Spring Boot', 'MySQL', 'Docker', 'Kubernetes', 'WebRTC', 'Redis'],
+      category: 'Full-Stack Development and Deployment automation',
+      image: 'assets/spofuncoach.png',
+      description: 'SpofunCoach is an all-in-one sports coaching platform designed to connect athletes with certified professional coaches. It enables seamless session booking, real-time scheduling, secure online payments, and detailed performance tracking. The platform empowers athletes to monitor their progress while giving coaches powerful tools to manage clients, sessions, and training plans—all in one place. ',
+      technologies: ['Angular', 'Spring Boot', 'PostgreSQL', 'Jhipster', 'Docker', 'Jenkins', 'Azure', 'SonarQube', 'Grafana', 'Prometheus','Git'],
       features: [
         'Real-time scheduling and calendar integration',
         'Video conferencing for remote coaching sessions',
-        'Progress tracking with detailed analytics and charts',
-        'Personalized workout plans and nutrition tracking',
+        'Local payment method using coins',
         'Payment integration with secure transaction handling',
         'Mobile-responsive design for athletes on the go',
-        'Push notifications for session reminders',
-        'Multi-language support (English, French, Arabic)'
+        'AI assistance ensuring easier use for clients',
+        'Multi-language support (English, French)'
       ],
       liveUrl: 'https://spofuncoach-demo.example.com',
       githubUrl: 'https://github.com/yourusername/spofuncoach'
     },
     webguardian: {
       title: 'Web Guardian',
-      subtitle: 'Cybersecurity Monitoring System',
-      category: 'Security & DevOps',
+      subtitle: 'Website Availability & SSL Monitoring System',
+      category: 'Security & Web Monitoring',
       image: 'assets/work-2.png',
-      description: 'Web Guardian is an advanced cybersecurity monitoring platform that provides real-time threat detection, automated vulnerability scanning, and comprehensive security reporting. The system uses machine learning algorithms to identify potential threats and provides automated responses to common security incidents.',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Python', 'TensorFlow', 'Docker', 'Grafana', 'Prometheus'],
+      description: 'Web Guardian is a web-based monitoring application designed to track website availability and SSL certificate validity. It provides real-time status checks, automated alerts, and a centralized dashboard to help users proactively detect downtime and security risks related to expired or misconfigured SSL certificates and servers.',
+      technologies: ['Symfony', 'Angular', 'MySQL', 'Git'],
       features: [
-        'Real-time threat detection and monitoring',
-        'Automated vulnerability scanning and assessment',
-        'Machine learning-based anomaly detection',
-        'Comprehensive security audit reports',
-        'Integration with popular DevOps tools (Jenkins, GitLab)',
-        'Custom alert rules and notifications',
-        'Interactive security dashboard with live metrics',
-        'Compliance reporting (ISO 27001, GDPR)'
+        'Website uptime and availability monitoring',
+        'SSL certificate status and expiration tracking',
+        'Automated alerts for downtime and SSL issues',
+        'Responsive and optimized user interface',
+        'Dashboard with real-time monitoring status',
+        'Server-side logic and database integration',
+        'Secure data handling and user authentication'
       ],
-      liveUrl: 'https://webguardian-demo.example.com',
+      liveUrl: "null",
       githubUrl: 'https://github.com/yourusername/webguardian'
     },
-    espritcollab: {
-      title: 'EspritCollab',
-      subtitle: 'Student Collaboration Platform',
-      category: 'Educational Technology',
-      image: 'assets/work-3.png',
-      description: 'EspritCollab is a collaborative workspace designed specifically for students to manage projects, share files, and communicate in real-time. The platform includes project management tools, version control integration, and real-time collaboration features to enhance teamwork and productivity.',
-      technologies: ['Angular', 'Symfony', 'PostgreSQL', 'Redis', 'Elasticsearch', 'WebSocket', 'Docker'],
-      features: [
-        'Project and task management with Kanban boards',
-        'Real-time collaborative document editing',
-        'File sharing with version control',
-        'Integrated chat and video conferencing',
-        'Assignment submission and grading system',
-        'Code collaboration with syntax highlighting',
-        'Team performance analytics and insights',
-        'Integration with popular dev tools (Git, VS Code)'
-      ],
-      liveUrl: 'https://espritcollab-demo.example.com',
-      githubUrl: 'https://github.com/yourusername/espritcollab'
+    
+   espritcollab: {
+  title: 'EspritCollab',
+  subtitle: 'Student Collaboration & Problem-Solving Platform',
+  category: 'Educational Technology & Cloud',
+  image: 'assets/work-3.png',
+  description: 'EspritCollab is a collaborative web platform designed to help students work together, manage projects, and solve academic problems efficiently. The application provides shared workspaces, task coordination, and communication features, and is fully deployed on cloud infrastructure using OpenStack with containerized services.',
+  technologies: [
+    'Spring Boot',
+    'Angular',
+    'MySQL',
+    'Docker',
+    'Kubernetes',
+    'OpenStack',
+    'Git',
+    'UML'
+  ],
+  features: [
+    'Collaborative project and task management',
+    'Shared workspaces for student teams',
+    'RESTful API services for platform operations',
+    'Responsive and user-friendly interface',
+    'Centralized data management with MySQL',
+    'Containerized backend and frontend using Docker',
+    'Orchestration and scaling with Kubernetes',
+    'Deployment on virtual machines using OpenStack services'
+  ],
+  liveUrl: "null",
+  githubUrl: 'https://github.com/yourusername/espritcollab'
+}
+,
+docnet: {
+  title: 'DocNet',
+  subtitle: 'Online Medical Appointment Booking Platform',
+  category: 'Healthcare & Web Applications',
+  image: 'assets/work-4.png',
+  description: 'DocNet is a healthcare web platform that enables patients to book medical appointments with doctors online. The system supports appointment scheduling, user management, and secure data handling. The project involved full analysis and design, backend API development, user interface implementation, and database integration.',
+  technologies: [
+    'Symfony',
+    'Java',
+    'JavaFX',
+    'MySQL',
+    'Git',
+    'UML'
+  ],
+  features: [
+    'Online appointment booking for patients',
+    'Doctor availability and schedule management',
+    'Patient and doctor account management',
+    'REST API development and backend logic',
+    'User-friendly interfaces built with JavaFX',
+    'Secure database integration with MySQL',
+    'System analysis and UML-based design',
+    'CRUD operations for medical data management'
+  ],
+  liveUrl: "null",
+  githubUrl: 'https://github.com/yourusername/docnet'
+}
+
+  };
+
+
+  certificateDetails: any = {
+    az900: {
+      title: 'Introduction to Microsoft Azure Cloud Services',
+      category: 'Azure Certification',
+      code: 'Microsoft',
+      image: 'assets/Coursera 1.jpg',
+      issueDate: 'Novembre 2024',
+      issuer: 'Microsoft',
+      verifyUrl: 'https://www.coursera.org/account/accomplishments/certificate/028LA5J32Y86',
+      skills: [
+        'Cloud Concepts',
+        'Azure Services',
+        'Microsoft Azure',
+        'Cloud Services',
+        'Cloud Deployment Models',
+        'Azure Architecture'
+      ]
     },
-    docnet: {
-      title: 'DocNet',
-      subtitle: 'Document Management System',
-      category: 'Enterprise Software',
-      image: 'assets/work-4.png',
-      description: 'DocNet is an enterprise-grade document management system featuring advanced version control, secure document sharing, and powerful search capabilities. The system supports multiple document formats, provides OCR functionality, and includes workflow automation for document approval processes.',
-      technologies: ['.NET Core', 'Angular', 'SQL Server', 'Elasticsearch', 'Azure Blob Storage', 'SignalR', 'Docker'],
-      features: [
-        'Advanced version control and document history',
-        'OCR (Optical Character Recognition) for scanned documents',
-        'Powerful full-text search with filters',
-        'Role-based access control and permissions',
-        'Document workflow automation and approval chains',
-        'Electronic signature integration',
-        'Audit trails and compliance reporting',
-        'Multi-format support (PDF, DOCX, XLSX, images)'
-      ],
-      liveUrl: 'https://docnet-demo.example.com',
-      githubUrl: 'https://github.com/yourusername/docnet'
+    az104: {
+      title: 'Microsoft Azure Services and Lifecycles',
+      category: 'Azure Certification',
+      code: 'Microsoft',
+      image: 'assets/Coursera 2.jpg', 
+      issueDate: 'December 2024',
+      issuer: 'Microsoft',
+      verifyUrl: 'https://www.coursera.org/account/accomplishments/certificate/2I43RNV8ORRG',
+      skills: [
+        'Azure Identity & Governance',
+        'Infrastructure As A Service (IaaS)',
+        'Single Sign-On (SSO)',
+        'Software As A Service',
+        'Cloud Security',
+        'Identity and Access Management'
+      ]
+    },
+    az400: {
+      title: 'Microsoft Azure Management Tools and Security Solutions',
+      category: 'Azure Certification',
+      code: 'Microsoft',
+      image: 'assets/Coursera 3.jpg',
+      issueDate: 'November 2024',
+      issuer: 'Microsoft',
+      verifyUrl: 'https://www.coursera.org/account/accomplishments/certificate/ZC0PSAW4W31B',
+      skills: [
+        'Serverless Computing',
+        'Distributed Denial-Of-Service (DDoS) Attacks',
+        'Network Security',
+        'Security & Compliance',
+        'Monitoring & Feedback',
+        'System Monitoring'
+      ]
     }
   };
 
@@ -218,5 +292,18 @@ export class HomeComponent implements OnInit {
       top: 0,
       behavior: 'smooth'
     });
+  }
+
+
+
+  // Certificate methods (new)
+  openCertificate(certificateId: string): void {
+    this.selectedCertificate = certificateId;
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeCertificate(): void {
+    this.selectedCertificate = null;
+    document.body.style.overflow = 'auto';
   }
 }
