@@ -63,6 +63,7 @@
             <img src="assets/moon_icon.png" alt="Toggle Dark Mode" class="w-6 dark:hidden" />
             <img src="assets/sun_icon.png" alt="Toggle Light Mode" class="w-6 hidden dark:block" />
         </button>
+
         <div class="section-bg">
             <img src="assets/bg3.jpg" alt="" />
             <!-- Light mode gradient overlay -->
@@ -70,12 +71,10 @@
             
             <div class="absolute inset-0 hidden dark:block dark:bg-gradient-to-b"></div>
         </div>
+
         <!-- ----- home section ------ -->
         <div id="top" class="w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col items-center justify-center gap-4 relative">
-            <!-- Gradient background for home -->
-
-        
-            <div class="absolute inset-0 bg-gradient-to-br from-white/90 via-white/70 to-white/90 dark:from-darkTheme/95 dark:via-darkTheme/85 dark:to-darkTheme/95 z-0"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-white/90 via-white/70 to-white/90 dark:from-darkTheme/95 dark:via-darkTheme/85 dark:to-darkTheme/95 z-0 rounded-b-[100px]"></div>
             
             <div class="relative z-10">
                 <img src="assets/ghayth.png" alt="" class="rounded-full w-32 mx-auto" />
@@ -527,8 +526,9 @@
             </div>
 
             <!-- Certificate Image -->
-            <div class="relative h-96 rounded-2xl overflow-hidden mb-8 border-2 border-gray-300 dark:border-white/30 bg-gray-100 dark:bg-darkHover/50 flex items-center justify-center">
-                <img [src]="certificateDetails[selectedCertificate].image" [alt]="certificateDetails[selectedCertificate].title" class="max-w-full max-h-full object-contain">
+            <div class="certificate-image-container fit-contain">
+                <img [src]="certificateDetails[selectedCertificate].image" 
+                     [alt]="certificateDetails[selectedCertificate].title">
             </div>
 
             <!-- Certificate Details -->

@@ -1,0 +1,11 @@
+<!-- For full container fill (may crop) -->
+<div class="certificate-image-container">
+    <img [src]="certificateDetails[selectedCertificate].image" 
+         [alt]="certificateDetails[selectedCertificate].title">
+</div>
+
+<!-- OR for full image visible (no crop, with padding) -->
+<div class="certificate-image-container fit-contain">
+    <img [src]="certificateDetails[selectedCertificate].image" 
+         [alt]="certificateDetails[selectedCertificate].title">
+</div>
