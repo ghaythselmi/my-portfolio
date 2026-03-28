@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
 
 interface ProjectDetail {
   title: string;
@@ -23,12 +23,15 @@ export class HomeComponent implements OnInit {
   selectedCertificate: string | null = null;
   isScrolled = false;
 
+  @ViewChild('navMenu') navMenu!: ElementRef;
+  @ViewChild('hamburger') hamburger!: ElementRef;
+
   projectDetails: { [key: string]: ProjectDetail } = {
     spofuncoach: {
       title: 'SpofunCoach',
       subtitle: 'Full-stack Sports Coaching Platform',
       category: 'Full-Stack Development & CI/CD',
-      image: 'assets/spofuncoach.png',
+      image: 'assets/Login.png',
       description: 'SpofunCoach is an all-in-one sports coaching platform designed to connect athletes with certified professional coaches. It enables seamless session booking, real-time scheduling, secure online payments, and detailed performance tracking. The platform empowers athletes to monitor their progress while giving coaches powerful tools to manage clients, sessions, and training plans—all in one place.',
       technologies: ['Angular', 'Spring Boot', 'PostgreSQL', 'Jhipster', 'Docker', 'Jenkins', 'Azure', 'SonarQube', 'Grafana', 'Prometheus', 'Git'],
       features: [
@@ -40,7 +43,7 @@ export class HomeComponent implements OnInit {
         'AI assistance ensuring easier use for clients',
         'Multi-language support (English, French)'
       ],
-      liveUrl: 'https://spofuncoach-demo.example.com',
+      liveUrl: 'http://spofuncoach.duckdns.org',
       githubUrl: 'https://github.com/ghaythselmi/spofuncoach'
     },
     webguardian: {
@@ -104,7 +107,7 @@ export class HomeComponent implements OnInit {
     }
   };
 
-  certificateDetails: any = {
+  certificateDetails: { [key: string]: any } = {
     az900: {
       title: 'Introduction to Microsoft Azure Cloud Services',
       category: 'Azure Certification',
@@ -160,6 +163,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadThemePreference();
+    this.setupMobileMenu();
   }
 
   @HostListener('window:scroll', [])
@@ -168,9 +172,12 @@ export class HomeComponent implements OnInit {
     this.isScrolled = scrollPosition > 50;
   }
 
+  /**
+   * Toggle between light and dark theme
+   */
   toggleTheme(): void {
     this.isDarkMode = !this.isDarkMode;
-    
+
     if (this.isDarkMode) {
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
@@ -180,39 +187,113 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  /**
+   * Open project details modal
+   */
   openProjectDetails(projectId: string): void {
     this.selectedProject = projectId;
     document.body.style.overflow = 'hidden';
   }
 
+  /**
+   * Close project details modal
+   */
   closeProjectDetails(): void {
     this.selectedProject = null;
     document.body.style.overflow = 'auto';
   }
 
+  /**
+   * Open certificate details modal
+   */
   openCertificate(certificateId: string): void {
     this.selectedCertificate = certificateId;
     document.body.style.overflow = 'hidden';
   }
 
+  /**
+   * Close certificate details modal
+   */
   closeCertificate(): void {
     this.selectedCertificate = null;
     document.body.style.overflow = 'auto';
   }
 
+  /**
+   * Download CV file
+   */
   downloadCV(): void {
     const link = document.createElement('a');
-    link.href = 'assets/_CV Ghayth Selmi .pdf';
+    link.href = 'assets/_CV_Ghayth_Selmi.pdf';
     link.download = 'Ghayth_Selmi_CV.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   }
 
+  /**
+   * Setup mobile menu functionality
+   */
+  private setupMobileMenu(): void {
+    if (!this.hamburger || !this.navMenu) {
+      return;
+    }
+
+    const hamburger = this.hamburger.nativeElement;
+    const navMenu = this.navMenu.nativeElement;
+
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    const navLinks = navMenu.querySelectorAll('a');
+    navLinks.forEach((link: HTMLElement) => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Close menu on outside click
+    document.addEventListener('click', (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!hamburger.contains(target) && !navMenu.contains(target)) {
+        navMenu.classList.remove('active');
+      }
+    });
+  }
+
+
   private loadThemePreference(): void {
-    if (localStorage.getItem('theme') === 'dark') {
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'dark') {
       this.isDarkMode = true;
       document.documentElement.classList.add('dark');
+    } else {
+      this.isDarkMode = false;
+      document.documentElement.classList.remove('dark');
     }
+  }
+
+  /**
+   * Smooth scroll to section
+   */
+  scrollToSection(sectionId: string): void {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offsetTop = element.offsetTop - 80;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  /**
+   * Get key-value pairs from object (for use in *ngFor)
+   */
+  objectKeys(obj: any): string[] {
+    return Object.keys(obj);
   }
 }

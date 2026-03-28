@@ -1,641 +1,475 @@
-<div class="font-primary dark:bg-darkTheme dark:text-white relative">
-    <nav id="navbar" 
-         class="w-full fixed px-8 py-4 flex items-center justify-between z-50 bg-white/80 dark:bg-[#1e293b]/80 backdrop-blur-sm border-b border-[#e2e8f0] dark:border-[#334155]"
-         [class.opacity-0]="isScrolled"
-         [class.scale-0]="isScrolled"
-         [class.pointer-events-none]="isScrolled">
-      
-      <a href="#!" [class.opacity-0]="isScrolled" [class.scale-0]="isScrolled" [style.transition]="'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)'">
-        <img src="assets/logo.png" alt="Logo" class="w-28 cursor-pointer dark:hidden" />
-        <img src="assets/logo_dark.png" alt="Logo" class="w-28 cursor-pointer hidden dark:block" />
-      </a>
-  
-      <ul id="navLink"
-          class="hidden md:flex items-center gap-8 rounded-full px-8 py-3 bg-white dark:bg-[#334155]/40 font-primary font-semibold text-sm"
-          [class.opacity-0]="isScrolled"
-          [class.scale-0]="isScrolled"
-          [class.pointer-events-none]="isScrolled">
-        <li><a class='hover:text-[#3b82f6] dark:hover:text-[#0ea5e9] transition-colors' href="#top">Home</a></li>
-        <li><a class='hover:text-[#3b82f6] dark:hover:text-[#0ea5e9] transition-colors' href="#education">Education</a></li>
-        <li><a class='hover:text-[#3b82f6] dark:hover:text-[#0ea5e9] transition-colors' href="#about">About</a></li>
-        <li><a class='hover:text-[#3b82f6] dark:hover:text-[#0ea5e9] transition-colors' href="#experience">Experience</a></li>
-        <li><a class='hover:text-[#3b82f6] dark:hover:text-[#0ea5e9] transition-colors' href="#work">Work</a></li>
-        <li><a class='hover:text-[#3b82f6] dark:hover:text-[#0ea5e9] transition-colors' href="#contact">Contact</a></li>
-      </ul>
-  
-      <div class="flex items-center gap-4">
-        <button (click)="toggleTheme()" 
-                class="p-2 rounded-lg hover:bg-[#f1f5f9] dark:hover:bg-[#475569] transition-colors"
-                [class.opacity-0]="isScrolled"
-                [class.scale-0]="isScrolled"
-                [class.pointer-events-none]="isScrolled">
-          <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0115.354 20.354z"/>
-          </svg>
-          <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1m-16 0H1m15.364 1.636l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
-          </svg>
-        </button>
-  
-        <a href="#contact"
-            class="hidden lg:flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-[#3b82f6] to-[#06b6d4] text-white rounded-lg font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all"
-            [class.opacity-0]="isScrolled"
-            [class.scale-0]="isScrolled"
-            [class.pointer-events-none]="isScrolled">
-          Get in touch
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-          </svg>
-        </a>
-      </div>
+<div class="container">
+    <!-- NAVIGATION -->
+    <nav class="navbar" [class.scrolled]="isScrolled">
+        <div class="nav-wrapper">
+            <a href="#!" [class.opacity-0]="isScrolled" [class.scale-0]="isScrolled" [style.transition]="'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)'">
+                <img src="assets/logo.png" alt="Logo" class="w-28 cursor-pointer dark:hidden" />
+                <img src="assets/logo_dark.png" alt="Logo" class="w-28 cursor-pointer hidden dark:block" />
+            </a>
+            <ul class="nav-menu" #navMenu>
+                <li><a href="#top" class="nav-link">Home</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#work" class="nav-link">Work</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" (click)="toggleTheme()" aria-label="Toggle theme"></button>
+                <a href="#contact" class="btn-primary">Let's Connect</a>
+            </div>
+
+            <button class="hamburger" #hamburger>
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </nav>
-  
-    <div class="absolute inset-0 -z-10 bg-gradient-to-br from-[#f8fafc] via-white to-[#f1f5f9] dark:from-[#0f172a] dark:via-[#1e293b] dark:to-[#0f172a]"></div>
-  
-    <div id="top" class="w-full max-w-5xl mx-auto px-6 py-32 flex flex-col items-center justify-center gap-8 relative min-h-screen">
-      <div class="relative z-10 text-center">
-        <img src="assets/ghayth.png" alt="Profile" class="rounded-full w-40 mx-auto mb-8 border-4 border-[#3b82f6] shadow-2xl slide-up" />
-        
-        <h1 class="text-6xl lg:text-7xl font-primary font-black mb-6 text-[#1e293b] dark:text-white title-slide leading-tight">
-          Ghayth Selmi
-        </h1>
-        
-        <p class="text-2xl lg:text-3xl font-primary font-semibold mb-4 bg-gradient-to-r from-[#3b82f6] to-[#06b6d4] bg-clip-text text-transparent text-reveal delay-1">
-          Full-Stack Engineer & DevOps Specialist
-        </p>
-        
-        <p class="text-lg text-[#64748b] dark:text-[#cbd5e1] max-w-2xl mx-auto mb-12 font-primary leading-relaxed text-reveal delay-2">
-          Recently graduated from ESPRIT, with a strong foundation in full-stack development and DevOps. Building scalable applications and deploying them with precision.
-        </p>
-  
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="#contact"
-              class="px-8 py-3 bg-gradient-to-r from-[#3b82f6] to-[#06b6d4] text-white rounded-lg font-semibold hover:shadow-2xl transform hover:-translate-y-1 transition-all flex items-center gap-2 slide-up delay-3">
-            Contact me
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-            </svg>
-          </a>
-  
-          <button (click)="downloadCV()"
-              class="px-8 py-3 rounded-lg border-2 border-[#3b82f6] text-[#3b82f6] dark:border-[#0ea5e9] dark:text-[#0ea5e9] font-semibold hover:bg-[#3b82f6]/10 dark:hover:bg-[#0ea5e9]/10 transition-all flex items-center gap-2 slide-up delay-4">
-            My resume
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19v-7m0 0V5m0 7H5m7 0h7"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  
-    <div id="education" class="w-full px-6 py-24 scroll-mt-20 relative">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-5xl font-primary font-black mb-16 text-[#1e293b] dark:text-white title-slide">Education</h2>
-        
-        <div class="max-w-4xl mx-auto space-y-8">
-          <div class="relative pl-24">
-            <div class="absolute left-0 top-6 w-4 h-4 bg-gradient-to-br from-[#3b82f6] to-[#06b6d4] rounded-full timeline-dot"></div>
-            
-            <div class="card-modern">
-              <div class="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-gradient-to-r from-[#3b82f6] to-[#06b6d4] rounded-full">
-                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                </svg>
-                <span class="text-white font-semibold text-sm">2020 - 2025</span>
-              </div>
-              
-              <h3 class="text-2xl font-primary font-bold text-[#1e293b] dark:text-white mb-2">Cloud Computing Engineering</h3>
-              <p class="text-[#64748b] dark:text-[#cbd5e1] flex items-center gap-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                </svg>
-                ESPRIT
-              </p>
-            </div>
-          </div>
-          
-          <div class="relative pl-24">
-            <div class="absolute left-0 top-6 w-4 h-4 bg-gradient-to-br from-[#06b6d4] to-[#3b82f6] rounded-full timeline-dot"></div>
-            
-            <div class="card-modern">
-              <div class="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-gradient-to-r from-[#06b6d4] to-[#3b82f6] rounded-full">
-                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                </svg>
-                <span class="text-white font-semibold text-sm">2015 - 2019</span>
-              </div>
-              
-              <h3 class="text-2xl font-primary font-bold text-[#1e293b] dark:text-white mb-2">Scientific Baccalaureate</h3>
-              <p class="text-[#64748b] dark:text-[#cbd5e1] flex items-center gap-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                </svg>
-                Pioneer High School Gabès
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <div id="about" class="w-full px-6 py-24 scroll-mt-20 relative">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-5xl font-primary font-black mb-4 text-[#1e293b] dark:text-white title-slide">About me</h2>
-        
-        <p class="text-lg text-[#64748b] dark:text-[#cbd5e1] max-w-4xl mx-auto mb-12 leading-relaxed">
-          I'm specializing in full-stack development and DevOps, with experience building end-to-end applications and deploying them using modern cloud and CI/CD practices. I work comfortably with frontend frameworks, backend APIs, databases, and containerized environments, focusing on clean code, scalability, and reliability. I enjoy solving complex problems, optimizing workflows, and turning ideas into production-ready solutions.
-        </p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="card-modern">
-            <svg class="w-7 h-7 mb-4 text-[#3b82f6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4m0 0l1 1m-1-1l-1 1m6-4l-1-1m1 1l1-1M6 20l-1-1m1 1l1-1m6-14l-1-1m1 1l1-1"/>
-            </svg>
-            <h3 class="text-xl font-primary font-bold mb-3 text-[#1e293b] dark:text-white">Web Development Frameworks</h3>
-            <p class="text-[#64748b] dark:text-[#cbd5e1]">Angular, Symfony, .NET, Spring Boot</p>
-          </div>
-  
-          <div class="card-modern">
-            <svg class="w-7 h-7 mb-4 text-[#3b82f6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7m0 0c0 2.21-3.582 4-8 4s-8-1.79-8-4m0 0c0-2.21 3.582-4 8-4s8 1.79 8 4m0 6c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
-            </svg>
-            <h3 class="text-xl font-primary font-bold mb-3 text-[#1e293b] dark:text-white">Databases</h3>
-            <p class="text-[#64748b] dark:text-[#cbd5e1]">MySQL, PostgreSQL, MongoDB</p>
-          </div>
-  
-          <div class="card-modern">
-            <svg class="w-7 h-7 mb-4 text-[#3b82f6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
-            </svg>
-            <h3 class="text-xl font-primary font-bold mb-3 text-[#1e293b] dark:text-white">Cloud & DevOps</h3>
-            <p class="text-[#64748b] dark:text-[#cbd5e1]">Docker, Kubernetes, Jenkins, Nginx, SonarQube, Grafana, Prometheus, Ansible</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <div id="experience" class="w-full px-6 py-24 scroll-mt-20 relative">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-5xl font-primary font-black mb-16 text-[#1e293b] dark:text-white title-slide">Professional Experience</h2>
-  
-        <div class="space-y-8">
-          <div class="relative pl-24">
-            <div class="absolute left-0 top-6 w-4 h-4 bg-gradient-to-br from-[#3b82f6] to-[#06b6d4] rounded-full timeline-dot"></div>
-            
-            <div class="card-modern">
-              <div class="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-gradient-to-r from-[#3b82f6] to-[#06b6d4] rounded-full">
-                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                </svg>
-                <span class="text-white font-semibold text-sm">February 2025 - August 2025</span>
-              </div>
-              
-              <h3 class="text-2xl font-primary font-bold text-[#1e293b] dark:text-white mb-2">Full Stack Developer Intern</h3>
-              <p class="text-[#64748b] dark:text-[#cbd5e1] mb-4 font-semibold flex items-center gap-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                </svg>
-                Spofun
-              </p>
-              
-              <ul class="space-y-2 mb-6">
-                <li class="flex gap-3 text-[#475569] dark:text-[#cbd5e1]">
-                  <span class="text-[#3b82f6] font-bold">✓</span>
-                  Developed full-stack sports coaching platform using Angular and Spring Boot
-                </li>
-                <li class="flex gap-3 text-[#475569] dark:text-[#cbd5e1]">
-                  <span class="text-[#3b82f6] font-bold">✓</span>
-                  Implemented RESTful APIs and real-time features for athlete-coach interaction
-                </li>
-                <li class="flex gap-3 text-[#475569] dark:text-[#cbd5e1]">
-                  <span class="text-[#3b82f6] font-bold">✓</span>
-                  Built CI/CD pipelines using Jenkins, Docker, and Docker Compose for automated deployments
-                </li>
-              </ul>
-              
-              <div class="flex flex-wrap gap-2">
-                <span class="text-sm px-3 py-1 bg-[#3b82f6]/10 dark:bg-[#3b82f6]/20 text-[#3b82f6] dark:text-[#0ea5e9] rounded-full border border-[#3b82f6]/30 font-semibold">Angular</span>
-                <span class="text-sm px-3 py-1 bg-[#06b6d4]/10 dark:bg-[#06b6d4]/20 text-[#06b6d4] dark:text-[#06b6d4] rounded-full border border-[#06b6d4]/30 font-semibold">Spring Boot</span>
-                <span class="text-sm px-3 py-1 bg-[#3b82f6]/10 dark:bg-[#3b82f6]/20 text-[#3b82f6] dark:text-[#0ea5e9] rounded-full border border-[#3b82f6]/30 font-semibold">PostgreSQL</span>
-                <span class="text-sm px-3 py-1 bg-[#06b6d4]/10 dark:bg-[#06b6d4]/20 text-[#06b6d4] dark:text-[#06b6d4] rounded-full border border-[#06b6d4]/30 font-semibold">Docker</span>
-                <span class="text-sm px-3 py-1 bg-[#3b82f6]/10 dark:bg-[#3b82f6]/20 text-[#3b82f6] dark:text-[#0ea5e9] rounded-full border border-[#3b82f6]/30 font-semibold">Jenkins</span>
-              </div>
-            </div>
-          </div>
-  
-          <div class="relative pl-24">
-            <div class="absolute left-0 top-6 w-4 h-4 bg-gradient-to-br from-[#06b6d4] to-[#3b82f6] rounded-full timeline-dot"></div>
-            
-            <div class="card-modern">
-              <div class="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-gradient-to-r from-[#06b6d4] to-[#3b82f6] rounded-full">
-                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                </svg>
-                <span class="text-white font-semibold text-sm">July 2024 - September 2024</span>
-              </div>
-              
-              <h3 class="text-2xl font-primary font-bold text-[#1e293b] dark:text-white mb-2">Full Stack Developer Intern</h3>
-              <p class="text-[#64748b] dark:text-[#cbd5e1] mb-4 font-semibold flex items-center gap-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                </svg>
-                ChyrineProd
-              </p>
-              
-              <ul class="space-y-2 mb-6">
-                <li class="flex gap-3 text-[#475569] dark:text-[#cbd5e1]">
-                  <span class="text-[#3b82f6] font-bold">✓</span>
-                  Developed a web application to monitor website availability and SSL certificate status
-                </li>
-                <li class="flex gap-3 text-[#475569] dark:text-[#cbd5e1]">
-                  <span class="text-[#3b82f6] font-bold">✓</span>
-                  Designed and implemented responsive and optimized user interfaces using Angular
-                </li>
-                <li class="flex gap-3 text-[#475569] dark:text-[#cbd5e1]">
-                  <span class="text-[#3b82f6] font-bold">✓</span>
-                  Implemented server-side features and database integration using Symfony and MySQL
-                </li>
-              </ul>
-              
-              <div class="flex flex-wrap gap-2">
-                <span class="text-sm px-3 py-1 bg-[#3b82f6]/10 dark:bg-[#3b82f6]/20 text-[#3b82f6] dark:text-[#0ea5e9] rounded-full border border-[#3b82f6]/30 font-semibold">Symfony</span>
-                <span class="text-sm px-3 py-1 bg-[#06b6d4]/10 dark:bg-[#06b6d4]/20 text-[#06b6d4] dark:text-[#06b6d4] rounded-full border border-[#06b6d4]/30 font-semibold">Angular</span>
-                <span class="text-sm px-3 py-1 bg-[#3b82f6]/10 dark:bg-[#3b82f6]/20 text-[#3b82f6] dark:text-[#0ea5e9] rounded-full border border-[#3b82f6]/30 font-semibold">MySQL</span>
-                <span class="text-sm px-3 py-1 bg-[#06b6d4]/10 dark:bg-[#06b6d4]/20 text-[#06b6d4] dark:text-[#06b6d4] rounded-full border border-[#06b6d4]/30 font-semibold">Git</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <div id="certificates" class="w-full px-6 py-24 scroll-mt-20 relative">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-5xl font-primary font-black mb-4 text-[#1e293b] dark:text-white title-slide">Certifications</h2>
-        <p class="text-lg text-[#64748b] dark:text-[#cbd5e1] max-w-2xl mx-auto mb-16">Professional certifications demonstrating expertise in cloud technologies and DevOps practices.</p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="card-modern group cursor-pointer" (click)="openCertificate('az900')">
-            <div class="relative h-48 bg-gradient-to-br from-[#3b82f6]/10 to-[#06b6d4]/10 dark:from-[#3b82f6]/20 dark:to-[#06b6d4]/20 flex items-center justify-center overflow-hidden rounded-lg mb-6 group-hover:shadow-lg transition-all">
-              <svg class="w-24 h-24 text-[#3b82f6] dark:text-[#0ea5e9] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-              </svg>
-              <div class="absolute top-4 right-4 w-10 h-10 bg-white dark:bg-[#334155] rounded-lg flex items-center justify-center shadow-lg">
-                <svg class="w-6 h-6" viewBox="0 0 23 23" fill="none">
-                  <path d="M0 0h11v11H0V0z" fill="#F25022"/>
-                  <path d="M12 0h11v11H12V0z" fill="#7FBA00"/>
-                  <path d="M0 12h11v11H0V12z" fill="#00A4EF"/>
-                  <path d="M12 12h11v11H12V12z" fill="#FFB900"/>
-                </svg>
-              </div>
-            </div>
-            
-            <h3 class="text-xl font-primary font-bold text-[#1e293b] dark:text-white mb-2">Introduction to Microsoft Azure Cloud Services</h3>
-            <p class="text-[#64748b] dark:text-[#cbd5e1] text-sm mb-4">Microsoft</p>
-            
-            <div class="flex items-center gap-2 mb-4 text-sm text-[#64748b] dark:text-[#cbd5e1]">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-              </svg>
-              <span>Issued: November 2024</span>
-            </div>
-            
-            <button class="w-full py-2 px-4 bg-gradient-to-r from-[#3b82f6] to-[#06b6d4] text-white rounded-lg font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all flex items-center justify-center gap-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-              </svg>
-              View Certificate
-            </button>
-          </div>
-  
-          <div class="card-modern group cursor-pointer" (click)="openCertificate('az104')">
-            <div class="relative h-48 bg-gradient-to-br from-[#06b6d4]/10 to-[#3b82f6]/10 dark:from-[#06b6d4]/20 dark:to-[#3b82f6]/20 flex items-center justify-center overflow-hidden rounded-lg mb-6 group-hover:shadow-lg transition-all">
-              <svg class="w-24 h-24 text-[#06b6d4] dark:text-[#06b6d4] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-              </svg>
-              <div class="absolute top-4 right-4 w-10 h-10 bg-white dark:bg-[#334155] rounded-lg flex items-center justify-center shadow-lg">
-                <svg class="w-6 h-6" viewBox="0 0 23 23" fill="none">
-                  <path d="M0 0h11v11H0V0z" fill="#F25022"/>
-                  <path d="M12 0h11v11H12V0z" fill="#7FBA00"/>
-                  <path d="M0 12h11v11H0V12z" fill="#00A4EF"/>
-                  <path d="M12 12h11v11H12V12z" fill="#FFB900"/>
-                </svg>
-              </div>
-            </div>
-            
-            <h3 class="text-xl font-primary font-bold text-[#1e293b] dark:text-white mb-2">Microsoft Azure Services and Lifecycles</h3>
-            <p class="text-[#64748b] dark:text-[#cbd5e1] text-sm mb-4">Microsoft</p>
-            
-            <div class="flex items-center gap-2 mb-4 text-sm text-[#64748b] dark:text-[#cbd5e1]">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-              </svg>
-              <span>Issued: December 2024</span>
-            </div>
-            
-            <button class="w-full py-2 px-4 bg-gradient-to-r from-[#06b6d4] to-[#3b82f6] text-white rounded-lg font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all flex items-center justify-center gap-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-              </svg>
-              View Certificate
-            </button>
-          </div>
-  
-          <div class="card-modern group cursor-pointer" (click)="openCertificate('az400')">
-            <div class="relative h-48 bg-gradient-to-br from-[#3b82f6]/10 to-[#06b6d4]/10 dark:from-[#3b82f6]/20 dark:to-[#06b6d4]/20 flex items-center justify-center overflow-hidden rounded-lg mb-6 group-hover:shadow-lg transition-all">
-              <svg class="w-24 h-24 text-[#3b82f6] dark:text-[#0ea5e9] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-              </svg>
-              <div class="absolute top-4 right-4 w-10 h-10 bg-white dark:bg-[#334155] rounded-lg flex items-center justify-center shadow-lg">
-                <svg class="w-6 h-6" viewBox="0 0 23 23" fill="none">
-                  <path d="M0 0h11v11H0V0z" fill="#F25022"/>
-                  <path d="M12 0h11v11H12V0z" fill="#7FBA00"/>
-                  <path d="M0 12h11v11H0V12z" fill="#00A4EF"/>
-                  <path d="M12 12h11v11H12V12z" fill="#FFB900"/>
-                </svg>
-              </div>
-            </div>
-            
-            <h3 class="text-xl font-primary font-bold text-[#1e293b] dark:text-white mb-2">Microsoft Azure Management Tools and Security Solutions</h3>
-            <p class="text-[#64748b] dark:text-[#cbd5e1] text-sm mb-4">Microsoft</p>
-            
-            <div class="flex items-center gap-2 mb-4 text-sm text-[#64748b] dark:text-[#cbd5e1]">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-              </svg>
-              <span>Issued: November 2024</span>
-            </div>
-            
-            <button class="w-full py-2 px-4 bg-gradient-to-r from-[#3b82f6] to-[#06b6d4] text-white rounded-lg font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all flex items-center justify-center gap-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-              </svg>
-              View Certificate
-            </button>
-          </div>
-        </div>
-      </div>
-  
-      <div *ngIf="selectedCertificate" class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/80 backdrop-blur-sm modal-overlay" (click)="closeCertificate()">
-        <div class="modal-content max-w-5xl relative" (click)="$event.stopPropagation()">
-          <button (click)="closeCertificate()" class="absolute top-6 right-6 p-2 hover:bg-[#f1f5f9] dark:hover:bg-[#334155] rounded-lg transition-colors z-10">
-            <svg class="w-6 h-6 text-[#1e293b] dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
-          </button>
-  
-          <div class="p-8">
-            <div class="mb-8">
-              <div class="flex items-center gap-4 mb-6">
-                <div class="w-16 h-16 bg-white dark:bg-[#334155] rounded-xl flex items-center justify-center shadow-lg border border-[#e2e8f0] dark:border-[#475569]">
-                  <svg class="w-10 h-10" viewBox="0 0 23 23" fill="none">
-                    <path d="M0 0h11v11H0V0z" fill="#F25022"/>
-                    <path d="M12 0h11v11H12V0z" fill="#7FBA00"/>
-                    <path d="M0 12h11v11H0V12z" fill="#00A4EF"/>
-                    <path d="M12 12h11v11H12V12z" fill="#FFB900"/>
-                  </svg>
+
+    <!-- HERO SECTION -->
+    <section id="top" class="hero">
+        <div class="hero-content">
+            <div class="profile-image-wrapper">
+                <img src="assets/ghayth.png" alt="Ghayth Selmi" class="profile-image">
+                <div class="profile-badge">
+                    <span class="badge-text">Available for Work</span>
                 </div>
-                <div>
-                  <div class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#3b82f6] to-[#06b6d4] rounded-full mb-2">
-                    <span class="text-white font-semibold text-sm">{{ certificateDetails[selectedCertificate].category }}</span>
-                  </div>
-                  <h2 class="text-4xl font-primary font-black text-[#1e293b] dark:text-white">{{ certificateDetails[selectedCertificate].title }}</h2>
+            </div>
+
+            <h1 class="hero-title">
+                <span class="title-word">Ghayth</span>
+                <span class="title-word">Selmi</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                <span class="subtitle-letter">F</span><span class="subtitle-letter">u</span><span class="subtitle-letter">l</span><span class="subtitle-letter">l</span><span class="subtitle-letter">-</span><span class="subtitle-letter">S</span><span class="subtitle-letter">t</span><span class="subtitle-letter">a</span><span class="subtitle-letter">c</span><span class="subtitle-letter">k</span>
+                <span class="subtitle-letter"> </span>
+                <span class="subtitle-letter">E</span><span class="subtitle-letter">n</span><span class="subtitle-letter">g</span><span class="subtitle-letter">i</span><span class="subtitle-letter">n</span><span class="subtitle-letter">e</span><span class="subtitle-letter">r</span>
+                <span class="subtitle-letter"> </span>
+                <span class="subtitle-letter">&</span>
+                <span class="subtitle-letter"> </span>
+                <span class="subtitle-letter">D</span><span class="subtitle-letter">e</span><span class="subtitle-letter">v</span><span class="subtitle-letter">O</span><span class="subtitle-letter">p</span><span class="subtitle-letter">s</span>
+            </p>
+
+            <p class="hero-description">
+                Recently graduated from ESPRIT, with a strong foundation in full-stack development and DevOps. Building scalable applications and deploying them with precision.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary btn-large">Get In Touch</a>
+                <button (click)="downloadCV()" class="btn-download btn-large">Download CV</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education" class="education">
+        <div class="section-header">
+            <h2 class="section-title">
+                <span class="title-char">E</span><span class="title-char">d</span><span class="title-char">u</span><span class="title-char">c</span><span class="title-char">a</span><span class="title-char">t</span><span class="title-char">i</span><span class="title-char">o</span><span class="title-char">n</span>
+            </h2>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content card">
+                    <span class="badge-date">2020 - 2025</span>
+                    <h3>Cloud Computing Engineering</h3>
+                    <div class="school-info">
+                        <p>ESPRIT</p>
+                    </div>
                 </div>
-              </div>
             </div>
-  
-            <div class="relative h-96 rounded-lg overflow-hidden mb-8 border border-[#e2e8f0] dark:border-[#334155] bg-gray-100 dark:bg-[#334155]">
-              <img [src]="certificateDetails[selectedCertificate].image" 
-                   [alt]="certificateDetails[selectedCertificate].title"
-                   class="w-full h-full object-cover">
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content card">
+                    <span class="badge-date">2015 - 2019</span>
+                    <h3>Scientific Baccalaureate</h3>
+                    <div class="school-info">
+                        <p>Pioneer High School Gabès</p>
+                    </div>
+                </div>
             </div>
-  
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <div class="p-6 bg-[#f8fafc] dark:bg-[#334155]/50 rounded-xl border border-[#e2e8f0] dark:border-[#475569]">
-                <h3 class="text-sm font-semibold text-[#64748b] dark:text-[#cbd5e1] mb-2">Issue Date</h3>
-                <p class="text-lg font-semibold text-[#1e293b] dark:text-white">{{ certificateDetails[selectedCertificate].issueDate }}</p>
-              </div>
-              
-              <div class="p-6 bg-[#f8fafc] dark:bg-[#334155]/50 rounded-xl border border-[#e2e8f0] dark:border-[#475569]">
-                <h3 class="text-sm font-semibold text-[#64748b] dark:text-[#cbd5e1] mb-2">Issuing Organization</h3>
-                <p class="text-lg font-semibold text-[#1e293b] dark:text-white">{{ certificateDetails[selectedCertificate].issuer }}</p>
-              </div>
-            </div>
-  
-            <div class="mb-8">
-              <h3 class="text-xl font-primary font-bold text-[#1e293b] dark:text-white mb-4">Skills Covered</h3>
-              <div class="flex flex-wrap gap-3">
-                <span *ngFor="let skill of certificateDetails[selectedCertificate].skills" class="px-4 py-2 bg-[#3b82f6]/10 dark:bg-[#3b82f6]/20 border border-[#3b82f6]/30 rounded-lg text-[#3b82f6] dark:text-[#0ea5e9] font-semibold text-sm">
-                  {{ skill }}
-                </span>
-              </div>
-            </div>
-  
-            <div class="flex gap-4">
-              <a [href]="certificateDetails[selectedCertificate].verifyUrl" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 px-6 bg-gradient-to-r from-[#3b82f6] to-[#06b6d4] text-white rounded-lg font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all flex items-center justify-center gap-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                Verify Certificate
-              </a>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  
-    <div id="work" class="w-full px-6 py-24 scroll-mt-20 relative">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-5xl font-primary font-black mb-4 text-[#1e293b] dark:text-white title-slide">Featured Projects</h2>
-        <p class="text-lg text-[#64748b] dark:text-[#cbd5e1] mb-16">Curated selection of recent work showcasing full-stack capabilities</p>
-  
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div class="card-modern overflow-hidden group cursor-pointer" (click)="openProjectDetails('spofuncoach')">
-            <div class="relative h-64 overflow-hidden rounded-lg mb-6">
-              <img src="assets/Login .png" alt="SpofunCoach" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
-            
-            <h3 class="text-2xl font-primary font-bold mb-2 text-[#1e293b] dark:text-white">SpofunCoach</h3>
-            <p class="text-[#64748b] dark:text-[#cbd5e1] mb-4">Sports coaching platform with real-time features</p>
-            
-            <button class="w-full py-2 px-4 bg-gradient-to-r from-[#3b82f6] to-[#06b6d4] text-white rounded-lg font-semibold hover:shadow-lg transition-all">
-              View Project →
-            </button>
-          </div>
-  
-          <div class="card-modern overflow-hidden group cursor-pointer" (click)="openProjectDetails('webguardian')">
-            <div class="relative h-64 overflow-hidden rounded-lg mb-6">
-              <img src="assets/work-2.png" alt="Web Guardian" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
-            
-            <h3 class="text-2xl font-primary font-bold mb-2 text-[#1e293b] dark:text-white">Web Guardian</h3>
-            <p class="text-[#64748b] dark:text-[#cbd5e1] mb-4">Website monitoring and SSL tracking system</p>
-            
-            <button class="w-full py-2 px-4 bg-gradient-to-r from-[#3b82f6] to-[#06b6d4] text-white rounded-lg font-semibold hover:shadow-lg transition-all">
-              View Project →
-            </button>
-          </div>
-  
-          <div class="card-modern overflow-hidden group cursor-pointer" (click)="openProjectDetails('espritcollab')">
-            <div class="relative h-64 overflow-hidden rounded-lg mb-6">
-              <img src="assets/work-3.png" alt="EspritCollab" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
-            
-            <h3 class="text-2xl font-primary font-bold mb-2 text-[#1e293b] dark:text-white">EspritCollab</h3>
-            <p class="text-[#64748b] dark:text-[#cbd5e1] mb-4">Student collaboration and project management</p>
-            
-            <button class="w-full py-2 px-4 bg-gradient-to-r from-[#3b82f6] to-[#06b6d4] text-white rounded-lg font-semibold hover:shadow-lg transition-all">
-              View Project →
-            </button>
-          </div>
-  
-          <div class="card-modern overflow-hidden group cursor-pointer" (click)="openProjectDetails('docnet')">
-            <div class="relative h-64 overflow-hidden rounded-lg mb-6">
-              <img src="assets/work-4.png" alt="DocNet" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
-            
-            <h3 class="text-2xl font-primary font-bold mb-2 text-[#1e293b] dark:text-white">DocNet</h3>
-            <p class="text-[#64748b] dark:text-[#cbd5e1] mb-4">Medical appointment booking platform</p>
-            
-            <button class="w-full py-2 px-4 bg-gradient-to-r from-[#3b82f6] to-[#06b6d4] text-white rounded-lg font-semibold hover:shadow-lg transition-all">
-              View Project →
-            </button>
-          </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about">
+        <div class="section-header">
+            <h2 class="section-title">
+                <span class="title-char">A</span><span class="title-char">b</span><span class="title-char">o</span><span class="title-char">u</span><span class="title-char">t</span>
+                <span class="title-char"> </span>
+                <span class="title-char">M</span><span class="title-char">e</span>
+            </h2>
         </div>
-      </div>
-  
-      <div *ngIf="selectedProject" class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/80 backdrop-blur-sm modal-overlay" (click)="closeProjectDetails()">
-        <div class="modal-content bg-white dark:bg-[#1e293b] max-w-4xl relative" (click)="$event.stopPropagation()">
-          <button (click)="closeProjectDetails()" class="absolute top-6 right-6 p-2 hover:bg-[#f1f5f9] dark:hover:bg-[#334155] rounded-lg transition-colors z-10">
-            <svg class="w-6 h-6 text-[#1e293b] dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
-          </button>
-  
-          <div class="p-8">
-            <div class="mb-8">
-              <span class="badge-modern mb-4">{{ projectDetails[selectedProject].category }}</span>
-              <h2 class="text-4xl font-primary font-black mb-2 text-[#1e293b] dark:text-white">{{ projectDetails[selectedProject].title }}</h2>
-              <p class="text-lg text-[#64748b] dark:text-[#cbd5e1]">{{ projectDetails[selectedProject].subtitle }}</p>
+
+        <p class="about-intro">
+            I'm specializing in full-stack development and DevOps, with experience building end-to-end applications and deploying them using modern cloud and CI/CD practices. I work comfortably with frontend frameworks, backend APIs, databases, and containerized environments.
+        </p>
+
+        <div class="skills-grid">
+            <!-- Web Development -->
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                </div>
+                <h3>Web Development</h3>
+                <p>Angular, Symfony, .NET, Spring Boot</p>
             </div>
-  
-            <div class="relative h-96 rounded-lg overflow-hidden mb-8 border border-[#e2e8f0] dark:border-[#334155]">
-              <img [src]="projectDetails[selectedProject].image" [alt]="projectDetails[selectedProject].title" class="w-full h-full object-cover">
+
+            <!-- Databases -->
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                    </svg>
+                </div>
+                <h3>Databases</h3>
+                <p>MySQL, PostgreSQL, MongoDB</p>
             </div>
-  
-            <div class="mb-8">
-              <h3 class="text-xl font-primary font-bold mb-4 text-[#1e293b] dark:text-white">Technologies</h3>
-              <div class="flex flex-wrap gap-2">
-                <span *ngFor="let tech of projectDetails[selectedProject].technologies" class="text-sm px-3 py-1 bg-[#3b82f6]/10 dark:bg-[#3b82f6]/20 text-[#3b82f6] dark:text-[#0ea5e9] rounded-full border border-[#3b82f6]/30 font-semibold">{{ tech }}</span>
-              </div>
+
+            <!-- Cloud & DevOps -->
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                    </svg>
+                </div>
+                <h3>Cloud & DevOps</h3>
+                <p>Docker, Kubernetes, Jenkins, Nginx, SonarQube, Grafana, Prometheus, Ansible</p>
             </div>
-  
-            <div class="mb-8">
-              <h3 class="text-xl font-primary font-bold mb-4 text-[#1e293b] dark:text-white">About</h3>
-              <p class="text-[#64748b] dark:text-[#cbd5e1] leading-relaxed">{{ projectDetails[selectedProject].description }}</p>
-            </div>
-  
-            <div class="mb-8">
-              <h3 class="text-xl font-primary font-bold mb-4 text-[#1e293b] dark:text-white">Features</h3>
-              <ul class="space-y-2">
-                <li *ngFor="let feature of projectDetails[selectedProject].features" class="flex gap-3 text-[#64748b] dark:text-[#cbd5e1]">
-                  <span class="text-[#3b82f6] font-bold">✓</span>
-                  {{ feature }}
-                </li>
-              </ul>
-            </div>
-  
-            <div class="flex gap-4">
-              <a [href]="projectDetails[selectedProject].liveUrl" target="_blank" class="flex-1 py-3 px-6 bg-gradient-to-r from-[#3b82f6] to-[#06b6d4] text-white rounded-lg font-semibold hover:shadow-lg transition-all">
-                Live Demo
-              </a>
-              <a [href]="projectDetails[selectedProject].githubUrl" target="_blank" class="flex-1 py-3 px-6 border-2 border-[#3b82f6] text-[#3b82f6] dark:border-[#0ea5e9] dark:text-[#0ea5e9] rounded-lg font-semibold hover:bg-[#3b82f6]/10 transition-all">
-                Source Code
-              </a>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  
-    <div id="contact" class="w-full px-6 py-24 scroll-mt-20 relative">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-5xl font-primary font-black mb-4 text-[#1e293b] dark:text-white title-slide">Let's Connect</h2>
-        <p class="text-lg text-[#64748b] dark:text-[#cbd5e1] mb-16 max-w-2xl">Open to collaborations and exciting projects. Reach out through your preferred channel.</p>
-  
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <a href="mailto:ghaith.selmi1905@gmail.com" class="card-modern group">
-            <div class="w-16 h-16 bg-gradient-to-br from-[#3b82f6] to-[#06b6d4] rounded-lg flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform">
-              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-              </svg>
-            </div>
-            <h3 class="text-xl font-primary font-bold mb-2 text-[#1e293b] dark:text-white">Email</h3>
-            <p class="text-[#64748b] dark:text-[#cbd5e1] text-sm">ghaith.selmi1905@gmail.com</p>
-          </a>
-  
-          <a href="https://www.linkedin.com/in/selmi-ghaith-675a12240" target="_blank" class="card-modern group">
-            <div class="w-16 h-16 bg-gradient-to-br from-[#3b82f6] to-[#06b6d4] rounded-lg flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform">
-              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
-              </svg>
-            </div>
-            <h3 class="text-xl font-primary font-bold mb-2 text-[#1e293b] dark:text-white">LinkedIn</h3>
-            <p class="text-[#64748b] dark:text-[#cbd5e1] text-sm">selmi-ghaith-675a12240</p>
-          </a>
-  
-          <a href="https://github.com/ghaythselmi" target="_blank" class="card-modern group">
-            <div class="w-16 h-16 bg-gradient-to-br from-[#3b82f6] to-[#06b6d4] rounded-lg flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform">
-              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-            </div>
-            <h3 class="text-xl font-primary font-bold mb-2 text-[#1e293b] dark:text-white">GitHub</h3>
-            <p class="text-[#64748b] dark:text-[#cbd5e1] text-sm">ghaythselmi</p>
-          </a>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="experience">
+        <div class="section-header">
+            <h2 class="section-title">
+                <span class="title-char">E</span><span class="title-char">x</span><span class="title-char">p</span><span class="title-char">e</span><span class="title-char">r</span><span class="title-char">i</span><span class="title-char">e</span><span class="title-char">n</span><span class="title-char">c</span><span class="title-char">e</span>
+            </h2>
         </div>
-      </div>
-    </div>
-  
-    <footer class="border-t border-[#e2e8f0] dark:border-[#334155] bg-[#f8fafc] dark:bg-[#0f172a]">
-      <div class="max-w-6xl mx-auto px-6 py-16">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-          <div>
-            <h3 class="text-lg font-primary font-bold mb-4 text-[#1e293b] dark:text-white">Ghayth Selmi</h3>
-            <p class="text-[#64748b] dark:text-[#cbd5e1]">Full-stack engineer crafting modern solutions with precision and innovation.</p>
-          </div>
-          <div class="grid grid-cols-2 gap-8">
-            <div>
-              <h4 class="font-primary font-bold mb-3 text-[#1e293b] dark:text-white text-sm">Navigation</h4>
-              <ul class="space-y-2 text-sm">
-                <li><a href="#top" class="text-[#64748b] hover:text-[#3b82f6] transition-colors">Home</a></li>
-                <li><a href="#education" class="text-[#64748b] hover:text-[#3b82f6] transition-colors">Education</a></li>
-                <li><a href="#experience" class="text-[#64748b] hover:text-[#3b82f6] transition-colors">Experience</a></li>
-                <li><a href="#work" class="text-[#64748b] hover:text-[#3b82f6] transition-colors">Projects</a></li>
-              </ul>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content card">
+                    <span class="badge-date">Feb 2025 - Aug 2025</span>
+                    <h3>Full Stack Developer Intern</h3>
+                    <div class="company-info">
+                        <p>Spofun</p>
+                    </div>
+                    <ul class="experience-list">
+                        <li>Developed full-stack sports coaching platform using Angular and Spring Boot</li>
+                        <li>Implemented RESTful APIs and real-time features for athlete-coach interaction</li>
+                        <li>Built CI/CD pipelines using Jenkins, Docker, and Docker Compose</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Angular</span>
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Jenkins</span>
+                    </div>
+                </div>
             </div>
-            <div>
-              <h4 class="font-primary font-bold mb-3 text-[#1e293b] dark:text-white text-sm">Connect</h4>
-              <ul class="space-y-2 text-sm">
-                <li><a href="https://github.com/ghaythselmi" target="_blank" class="text-[#64748b] hover:text-[#3b82f6] transition-colors">GitHub</a></li>
-                <li><a href="https://www.linkedin.com/in/selmi-ghaith-675a12240" target="_blank" class="text-[#64748b] hover:text-[#3b82f6] transition-colors">LinkedIn</a></li>
-                <li><a href="mailto:ghaith.selmi1905@gmail.com" class="text-[#64748b] hover:text-[#3b82f6] transition-colors">Email</a></li>
-              </ul>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content card">
+                    <span class="badge-date">Jul 2024 - Sep 2024</span>
+                    <h3>Full Stack Developer Intern</h3>
+                    <div class="company-info">
+                        <p>ChyrineProd</p>
+                    </div>
+                    <ul class="experience-list">
+                        <li>Developed web application to monitor website availability and SSL certificate status</li>
+                        <li>Designed and implemented responsive UIs using Angular</li>
+                        <li>Implemented server-side features using Symfony and MySQL</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Symfony</span>
+                        <span class="tech-tag">Angular</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">Git</span>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-  
-        <div class="border-t border-[#e2e8f0] dark:border-[#334155] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p class="text-sm text-[#94a3b8]">&copy; 2026 Ghayth Selmi. All rights reserved.</p>
-          <p class="text-sm text-[#94a3b8] font-mono">→ System Online</p>
+    </section>
+
+    <!-- CERTIFICATES SECTION -->
+    <section id="certificates" class="certificates">
+        <div class="section-header">
+            <h2 class="section-title">
+                <span class="title-char">C</span><span class="title-char">e</span><span class="title-char">r</span><span class="title-char">t</span><span class="title-char">i</span><span class="title-char">f</span><span class="title-char">i</span><span class="title-char">c</span><span class="title-char">a</span><span class="title-char">t</span><span class="title-char">i</span><span class="title-char">o</span><span class="title-char">n</span><span class="title-char">s</span>
+            </h2>
+            <p class="section-subtitle">Professional certifications demonstrating expertise in cloud technologies and DevOps practices.</p>
         </div>
-      </div>
+
+        <div class="certificates-grid">
+            <div class="cert-card" *ngFor="let cert of certificateDetails | keyvalue" (click)="openCertificate(cert.key)">
+                <!-- Certificate badge icon -->
+                <div class="cert-image">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="8" r="6"></circle>
+                        <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+                    </svg>
+                </div>
+
+                <h3>{{ cert.value.title }}</h3>
+                <p class="cert-issuer">{{ cert.value.issuer }}</p>
+
+                <div class="cert-date">
+                    <span>{{ cert.value.issueDate }}</span>
+                </div>
+
+                <button class="btn-view-cert">View Certificate</button>
+            </div>
+        </div>
+
+        <!-- Certificate Modal -->
+        <div *ngIf="selectedCertificate" class="modal-overlay" (click)="closeCertificate()">
+            <div class="modal-content" (click)="$event.stopPropagation()">
+                <button (click)="closeCertificate()" class="close-modal"></button>
+
+                <div class="modal-header">
+                    <div class="cert-logo-large">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="8" r="6"></circle>
+                            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="badge-modal">{{ certificateDetails[selectedCertificate].category }}</span>
+                        <h2>{{ certificateDetails[selectedCertificate].title }}</h2>
+                    </div>
+                </div>
+
+                <div class="modal-image">
+                    <img [src]="certificateDetails[selectedCertificate].image" [alt]="certificateDetails[selectedCertificate].title">
+                </div>
+
+                <div class="modal-info-grid">
+                    <div class="info-box">
+                        <h3>Issue Date</h3>
+                        <p>{{ certificateDetails[selectedCertificate].issueDate }}</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Issuing Organization</h3>
+                        <p>{{ certificateDetails[selectedCertificate].issuer }}</p>
+                    </div>
+                </div>
+
+                <div class="modal-skills">
+                    <h3>Skills Covered</h3>
+                    <div class="skills-list">
+                        <span class="skill-badge" *ngFor="let skill of certificateDetails[selectedCertificate].skills">
+                            {{ skill }}
+                        </span>
+                    </div>
+                </div>
+
+                <a [href]="certificateDetails[selectedCertificate].verifyUrl" target="_blank" class="btn-primary btn-verify">Verify Certificate</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="work" class="projects">
+        <div class="section-header">
+            <h2 class="section-title">
+                <span class="title-char">F</span><span class="title-char">e</span><span class="title-char">a</span><span class="title-char">t</span><span class="title-char">u</span><span class="title-char">r</span><span class="title-char">e</span><span class="title-char">d</span>
+                <span class="title-char"> </span>
+                <span class="title-char">W</span><span class="title-char">o</span><span class="title-char">r</span><span class="title-char">k</span>
+            </h2>
+            <p class="section-subtitle">Recent projects showcasing full-stack capabilities</p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card" *ngFor="let project of projectDetails | keyvalue" (click)="openProjectDetails(project.key)">
+                <div class="project-image">
+                    <img [src]="project.value.image" [alt]="project.value.title">
+                </div>
+                <div class="project-info">
+                    <h3>{{ project.value.title }}</h3>
+                    <p>{{ project.value.subtitle }}</p>
+                    <a href="#" class="btn-arrow">View Project</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Modal -->
+        <div *ngIf="selectedProject" class="modal-overlay" (click)="closeProjectDetails()">
+            <div class="modal-content modal-large" (click)="$event.stopPropagation()">
+                <button (click)="closeProjectDetails()" class="close-modal"></button>
+
+                <div class="modal-header">
+                    <span class="badge-modal">{{ projectDetails[selectedProject].category }}</span>
+                    <h2>{{ projectDetails[selectedProject].title }}</h2>
+                    <p class="subtitle-text">{{ projectDetails[selectedProject].subtitle }}</p>
+                </div>
+
+                <div class="modal-image">
+                    <img [src]="projectDetails[selectedProject].image" [alt]="projectDetails[selectedProject].title">
+                </div>
+
+                <div class="modal-section">
+                    <h3>Technologies</h3>
+                    <div class="tech-badges">
+                        <span class="tech-badge" *ngFor="let tech of projectDetails[selectedProject].technologies">
+                            {{ tech }}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3>About</h3>
+                    <p class="description-text">{{ projectDetails[selectedProject].description }}</p>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Features</h3>
+                    <ul class="features-list">
+                        <li *ngFor="let feature of projectDetails[selectedProject].features">
+                            {{ feature }}
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="modal-actions">
+                    <a [href]="projectDetails[selectedProject].liveUrl" target="_blank" class="btn-primary">Live Demo</a>
+                    <a [href]="projectDetails[selectedProject].githubUrl" target="_blank" class="btn-secondary">View Code</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact">
+        <div class="section-header">
+            <h2 class="section-title">
+                <span class="title-char">L</span><span class="title-char">e</span><span class="title-char">t</span><span class="title-char">'</span><span class="title-char">s</span>
+                <span class="title-char"> </span>
+                <span class="title-char">C</span><span class="title-char">o</span><span class="title-char">n</span><span class="title-char">n</span><span class="title-char">e</span><span class="title-char">c</span><span class="title-char">t</span>
+            </h2>
+            <p class="section-subtitle">Open to collaborations and exciting projects</p>
+        </div>
+
+        <div class="contact-grid">
+            <!-- Email -->
+            <a href="mailto:ghaith.selmi1905@gmail.com" class="contact-card">
+                <div class="contact-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                </div>
+                <h3>Email</h3>
+                <p>ghaith.selmi1905@gmail.com</p>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/selmi-ghaith-675a12240" target="_blank" class="contact-card">
+                <div class="contact-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </div>
+                <h3>LinkedIn</h3>
+                <p>selmi-ghaith-675a12240</p>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/ghaythselmi" target="_blank" class="contact-card">
+                <div class="contact-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                        <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                    </svg>
+                </div>
+                <h3>GitHub</h3>
+                <p>ghaythselmi</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <img src="assets/foot.jpg" alt="footer background" class="footer-bg-img">
+
+        <div class="footer-content">
+            <!-- Brand Section -->
+            <div class="footer-section">
+                <h3>Ghayth Selmi</h3>
+                <p>Full-Stack Engineer & DevOps Specialist crafting modern solutions with precision and innovation.</p>
+                <div class="footer-social">
+                    <!-- GitHub -->
+                    <a href="https://github.com/ghaythselmi" target="_blank" title="GitHub">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                            <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                        </svg>
+                    </a>
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/selmi-ghaith-675a12240" target="_blank" title="LinkedIn">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                    <!-- Email -->
+                    <a href="mailto:ghaith.selmi1905@gmail.com" title="Email">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#top">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#work">Projects</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Tech Stack</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Frontend & Backend</a></li>
+                    <li><a href="#">Databases</a></li>
+                    <li><a href="#">Cloud & DevOps</a></li>
+                    <li><a href="#">Tools & More</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-divider">
+            <div></div>
+            <a href="#top" class="footer-logo">GS</a>
+            <div></div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ghayth Selmi. All rights reserved. | Designed & Built with ❤️ by Ghayth</p>
+            <div class="footer-status">System Online</div>
+        </div>
     </footer>
-  </div>
+</div>
