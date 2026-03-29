@@ -18,7 +18,6 @@ interface ProjectDetail {
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  isDarkMode = false;
   selectedProject: string | null = null;
   selectedCertificate: string | null = null;
   isScrolled = false;
@@ -111,58 +110,33 @@ export class HomeComponent implements OnInit {
     az900: {
       title: 'Introduction to Microsoft Azure Cloud Services',
       category: 'Azure Certification',
-      code: 'Microsoft',
       image: 'assets/Coursera 1.jpg',
       issueDate: 'November 2024',
       issuer: 'Microsoft',
       verifyUrl: 'https://www.coursera.org/account/accomplishments/certificate/028LA5J32Y86',
-      skills: [
-        'Cloud Concepts',
-        'Azure Services',
-        'Microsoft Azure',
-        'Cloud Services',
-        'Cloud Deployment Models',
-        'Azure Architecture'
-      ]
+      skills: ['Cloud Concepts', 'Azure Services', 'Microsoft Azure', 'Cloud Services', 'Cloud Deployment Models', 'Azure Architecture']
     },
     az104: {
       title: 'Microsoft Azure Services and Lifecycles',
       category: 'Azure Certification',
-      code: 'Microsoft',
       image: 'assets/Coursera 2.jpg',
       issueDate: 'December 2024',
       issuer: 'Microsoft',
       verifyUrl: 'https://www.coursera.org/account/accomplishments/certificate/2I43RNV8ORRG',
-      skills: [
-        'Azure Identity & Governance',
-        'Infrastructure As A Service (IaaS)',
-        'Single Sign-On (SSO)',
-        'Software As A Service',
-        'Cloud Security',
-        'Identity and Access Management'
-      ]
+      skills: ['Azure Identity & Governance', 'Infrastructure As A Service (IaaS)', 'Single Sign-On (SSO)', 'Software As A Service', 'Cloud Security', 'Identity and Access Management']
     },
     az400: {
       title: 'Microsoft Azure Management Tools and Security Solutions',
       category: 'Azure Certification',
-      code: 'Microsoft',
       image: 'assets/Coursera 3.jpg',
       issueDate: 'November 2024',
       issuer: 'Microsoft',
       verifyUrl: 'https://www.coursera.org/account/accomplishments/certificate/ZC0PSAW4W31B',
-      skills: [
-        'Serverless Computing',
-        'Distributed Denial-Of-Service (DDoS) Attacks',
-        'Network Security',
-        'Security & Compliance',
-        'Monitoring & Feedback',
-        'System Monitoring'
-      ]
+      skills: ['Serverless Computing', 'Distributed Denial-Of-Service (DDoS) Attacks', 'Network Security', 'Security & Compliance', 'Monitoring & Feedback', 'System Monitoring']
     }
   };
 
   ngOnInit(): void {
-    this.loadThemePreference();
     this.setupMobileMenu();
   }
 
@@ -172,56 +146,26 @@ export class HomeComponent implements OnInit {
     this.isScrolled = scrollPosition > 50;
   }
 
-  /**
-   * Toggle between light and dark theme
-   */
-  toggleTheme(): void {
-    this.isDarkMode = !this.isDarkMode;
-
-    if (this.isDarkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }
-
-  /**
-   * Open project details modal
-   */
   openProjectDetails(projectId: string): void {
     this.selectedProject = projectId;
     document.body.style.overflow = 'hidden';
   }
 
-  /**
-   * Close project details modal
-   */
   closeProjectDetails(): void {
     this.selectedProject = null;
     document.body.style.overflow = 'auto';
   }
 
-  /**
-   * Open certificate details modal
-   */
   openCertificate(certificateId: string): void {
     this.selectedCertificate = certificateId;
     document.body.style.overflow = 'hidden';
   }
 
-  /**
-   * Close certificate details modal
-   */
   closeCertificate(): void {
     this.selectedCertificate = null;
     document.body.style.overflow = 'auto';
   }
 
-  /**
-   * Download CV file
-   */
   downloadCV(): void {
     const link = document.createElement('a');
     link.href = 'assets/_CV_Ghayth_Selmi.pdf';
@@ -231,13 +175,8 @@ export class HomeComponent implements OnInit {
     document.body.removeChild(link);
   }
 
-  /**
-   * Setup mobile menu functionality
-   */
   private setupMobileMenu(): void {
-    if (!this.hamburger || !this.navMenu) {
-      return;
-    }
+    if (!this.hamburger || !this.navMenu) return;
 
     const hamburger = this.hamburger.nativeElement;
     const navMenu = this.navMenu.nativeElement;
@@ -246,15 +185,10 @@ export class HomeComponent implements OnInit {
       navMenu.classList.toggle('active');
     });
 
-    // Close menu when a link is clicked
-    const navLinks = navMenu.querySelectorAll('a');
-    navLinks.forEach((link: HTMLElement) => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-      });
+    navMenu.querySelectorAll('a').forEach((link: HTMLElement) => {
+      link.addEventListener('click', () => navMenu.classList.remove('active'));
     });
 
-    // Close menu on outside click
     document.addEventListener('click', (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (!hamburger.contains(target) && !navMenu.contains(target)) {
@@ -263,36 +197,13 @@ export class HomeComponent implements OnInit {
     });
   }
 
-
-  private loadThemePreference(): void {
-    const savedTheme = localStorage.getItem('theme');
-
-    if (savedTheme === 'dark') {
-      this.isDarkMode = true;
-      document.documentElement.classList.add('dark');
-    } else {
-      this.isDarkMode = false;
-      document.documentElement.classList.remove('dark');
-    }
-  }
-
-  /**
-   * Smooth scroll to section
-   */
   scrollToSection(sectionId: string): void {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offsetTop = element.offsetTop - 80;
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: element.offsetTop - 80, behavior: 'smooth' });
     }
   }
 
-  /**
-   * Get key-value pairs from object (for use in *ngFor)
-   */
   objectKeys(obj: any): string[] {
     return Object.keys(obj);
   }

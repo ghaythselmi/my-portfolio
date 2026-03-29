@@ -3,7 +3,7 @@
     <nav class="navbar" [class.scrolled]="isScrolled">
         <div class="nav-wrapper">
             <a href="#!" [class.opacity-0]="isScrolled" [class.scale-0]="isScrolled" [style.transition]="'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)'">
-                <img src="assets/logo.png" alt="Logo" class="w-28 cursor-pointer dark:hidden" />
+                <img src="assets/logo_dark.png" alt="Logo" class="w-28 cursor-pointer dark:hidden" />
                 <img src="assets/logo_dark.png" alt="Logo" class="w-28 cursor-pointer hidden dark:block" />
             </a>
             <ul class="nav-menu" #navMenu>
@@ -16,7 +16,6 @@
             </ul>
 
             <div class="nav-actions">
-                <button class="theme-toggle" (click)="toggleTheme()" aria-label="Toggle theme"></button>
                 <a href="#contact" class="btn-primary">Let's Connect</a>
             </div>
 
@@ -33,9 +32,9 @@
         <div class="hero-content">
             <div class="profile-image-wrapper">
                 <img src="assets/ghayth.png" alt="Ghayth Selmi" class="profile-image">
-                <div class="profile-badge">
-                    <span class="badge-text">Available for Work</span>
-                </div>
+            </div>
+            <div class="profile-badge">
+                <span class="badge-text">Available for Work</span>
             </div>
 
             <h1 class="hero-title">
