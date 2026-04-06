@@ -51,6 +51,7 @@
   --font-body:    'Plus Jakarta Sans', sans-serif;
   --font-mono:    'JetBrains Mono', monospace;
 
+
   display: block;
   font-family: var(--font-body);
   color: var(--ink);
@@ -595,12 +596,12 @@ section {
   margin-right: auto;
   padding: 110px 2rem;
   width: 100%;
-  max-width: 1400px;
   margin: 0 auto;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  // Do NOT add overflow:hidden here — section bg images use ::before with inset:0
 }
 
 .section-header {
@@ -643,6 +644,12 @@ section {
   margin-top: 0.85rem;
   text-transform: uppercase;
 }
+
+// ============================================================
+// ABOUT SECTION — cloud/devops background image
+// ============================================================
+
+
 
 // ============================================================
 // TIMELINE
