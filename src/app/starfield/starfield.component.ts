@@ -3,22 +3,21 @@ import {
   ViewChild, ElementRef, NgZone, HostListener
 } from '@angular/core';
 
-interface Star {
+interface Node {
   x: number; y: number;
   vx: number; vy: number;
   radius: number;
   alpha: number;
   alphaDelta: number;
-  color: string;
 }
 
-interface Sparkle {
+interface CodeParticle {
   x: number; y: number;
   vx: number; vy: number;
-  radius: number;
   alpha: number;
   decay: number;
-  color: string;
+  symbol: string;
+  size: number;
 }
 
 @Component({
@@ -26,26 +25,31 @@ interface Sparkle {
   templateUrl: './starfield.component.html',
   styleUrls: ['./starfield.component.scss']
 })
-export class StarfieldComponent implements OnInit, AfterViewInit, OnDestroy {
+export class StarfieldComponent implements AfterViewInit, OnDestroy {
   @ViewChild('canvas') canvasRef!: ElementRef<HTMLCanvasElement>;
 
   private ctx!: CanvasRenderingContext2D;
   private animId = 0;
-  private stars: Star[] = [];
-  private sparkles: Sparkle[] = [];
+  private nodes: Node[] = [];
+  private codeParticles: CodeParticle[] = [];
   private mouse = { x: -9999, y: -9999 };
 
-  private colors = ['#ff6035', '#f4c430', '#2de2a4', '#9b5de5', '#fff8f0'];
+  // IT-themed symbols that burst on cursor move
+  private symbols = ['0', '1', '/>', '{', '}', '<', '>', '//', ';', '()', '=>', '[]'];
+
+  // Colour palette — coral accent, dim white nodes, mint for connections
+  private readonly CORAL  = '#ff6035';
+  private readonly WHITE  = '#fff8f0';
+  private readonly MINT   = '#2de2a4';
+  private readonly CONN_DIST = 140; // max distance for drawing a connection line
 
   constructor(private zone: NgZone) {}
-
-  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     const canvas = this.canvasRef.nativeElement;
     this.ctx = canvas.getContext('2d')!;
     this.resize();
-    this.initStars();
+    this.initNodes();
     this.zone.runOutsideAngular(() => this.loop());
   }
 
@@ -56,7 +60,7 @@ export class StarfieldComponent implements OnInit, AfterViewInit, OnDestroy {
   @HostListener('window:resize')
   resize(): void {
     const canvas = this.canvasRef.nativeElement;
-    canvas.width = window.innerWidth;
+    canvas.width  = window.innerWidth;
     canvas.height = window.innerHeight;
   }
 
@@ -64,47 +68,45 @@ export class StarfieldComponent implements OnInit, AfterViewInit, OnDestroy {
   onMouseMove(e: MouseEvent): void {
     this.mouse.x = e.clientX;
     this.mouse.y = e.clientY;
-    const count = 2 + Math.floor(Math.random() * 3);
+
+    // Spawn 2–3 code symbol particles per mouse move
+    const count = 2 + Math.floor(Math.random() * 2);
     for (let i = 0; i < count; i++) {
-      this.sparkles.push(this.createSparkle(e.clientX, e.clientY));
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 0.6 + Math.random() * 2.2;
+      const sym = this.symbols[Math.floor(Math.random() * this.symbols.length)];
+      this.codeParticles.push({
+        x: e.clientX,
+        y: e.clientY,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed - 0.5, // slight upward bias
+        alpha: 1,
+        decay: 0.022 + Math.random() * 0.018,
+        symbol: sym,
+        size: 9 + Math.floor(Math.random() * 7)
+      });
     }
   }
 
-  private initStars(): void {
-    const canvas = this.canvasRef.nativeElement;
-    const count = Math.floor((canvas.width * canvas.height) / 6000);
+  // ── Init ────────────────────────────────────────────────────
+
+  private initNodes(): void {
+    const { width: W, height: H } = this.canvasRef.nativeElement;
+    const count = Math.floor((W * H) / 14000); // ~80–120 nodes on typical screens
     for (let i = 0; i < count; i++) {
-      this.stars.push(this.createStar(canvas.width, canvas.height));
+      this.nodes.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        radius: 1.2 + Math.random() * 1.8,
+        alpha: 0.25 + Math.random() * 0.55,
+        alphaDelta: (Math.random() - 0.5) * 0.004
+      });
     }
   }
 
-  private createStar(w: number, h: number): Star {
-    const color = this.colors[Math.floor(Math.random() * this.colors.length)];
-    return {
-      x: Math.random() * w, y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3,
-      radius: 0.5 + Math.random() * 1.5,
-      alpha: 0.2 + Math.random() * 0.6,
-      alphaDelta: (Math.random() - 0.5) * 0.005,
-      color
-    };
-  }
-
-  private createSparkle(x: number, y: number): Sparkle {
-    const angle = Math.random() * Math.PI * 2;
-    const speed = 0.5 + Math.random() * 2.5;
-    const color = this.colors[Math.floor(Math.random() * this.colors.length)];
-    return {
-      x, y,
-      vx: Math.cos(angle) * speed,
-      vy: Math.sin(angle) * speed,
-      radius: 0.8 + Math.random() * 2.2,
-      alpha: 0.9,
-      decay: 0.025 + Math.random() * 0.03,
-      color
-    };
-  }
+  // ── Main loop ────────────────────────────────────────────────
 
   private loop(): void {
     this.animId = requestAnimationFrame(() => this.loop());
@@ -113,74 +115,112 @@ export class StarfieldComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private draw(): void {
     const canvas = this.canvasRef.nativeElement;
-    const ctx = this.ctx;
+    const ctx    = this.ctx;
     const W = canvas.width, H = canvas.height;
 
-    ctx.fillStyle = 'rgba(13,11,30,0.18)';
+    // Semi-transparent clear — creates motion trail
+    ctx.fillStyle = 'rgba(13,11,30,0.22)';
     ctx.fillRect(0, 0, W, H);
 
-    for (const s of this.stars) {
-      const dx = this.mouse.x - s.x;
-      const dy = this.mouse.y - s.y;
+    // ── Update & draw nodes ──────────────────────────────────
+    for (const n of this.nodes) {
+      // Subtle cursor attraction within 180px
+      const dx = this.mouse.x - n.x;
+      const dy = this.mouse.y - n.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 200) {
-        const force = (200 - dist) / 200 * 0.015;
-        s.vx += dx / dist * force;
-        s.vy += dy / dist * force;
+      if (dist < 180 && dist > 0) {
+        const f = (180 - dist) / 180 * 0.012;
+        n.vx += dx / dist * f;
+        n.vy += dy / dist * f;
       }
-      s.vx *= 0.98; s.vy *= 0.98;
-      s.x += s.vx; s.y += s.vy;
-      if (s.x < 0) s.x = W; if (s.x > W) s.x = 0;
-      if (s.y < 0) s.y = H; if (s.y > H) s.y = 0;
-      s.alpha += s.alphaDelta;
-      if (s.alpha <= 0.1 || s.alpha >= 0.85) s.alphaDelta *= -1;
 
+      n.vx *= 0.985;
+      n.vy *= 0.985;
+      n.x  += n.vx;
+      n.y  += n.vy;
+
+      // Wrap edges
+      if (n.x < 0) n.x = W; else if (n.x > W) n.x = 0;
+      if (n.y < 0) n.y = H; else if (n.y > H) n.y = 0;
+
+      // Twinkle
+      n.alpha += n.alphaDelta;
+      if (n.alpha < 0.1 || n.alpha > 0.8) n.alphaDelta *= -1;
+
+      // Node dot — white, small
       ctx.beginPath();
-      ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
-      ctx.fillStyle = this.hexToRgba(s.color, s.alpha);
+      ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+      ctx.fillStyle = this.rgba(this.WHITE, n.alpha * 0.75);
       ctx.fill();
+    }
 
-      if (s.radius > 1.2) {
-        const grad = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.radius * 4);
-        grad.addColorStop(0, this.hexToRgba(s.color, s.alpha * 0.4));
-        grad.addColorStop(1, 'rgba(0,0,0,0)');
+    // ── Draw connection lines between nearby nodes ────────────
+    for (let i = 0; i < this.nodes.length; i++) {
+      for (let j = i + 1; j < this.nodes.length; j++) {
+        const a = this.nodes[i], b = this.nodes[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const d  = Math.sqrt(dx * dx + dy * dy);
+        if (d < this.CONN_DIST) {
+          const lineAlpha = (1 - d / this.CONN_DIST) * 0.28;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = this.rgba(this.MINT, lineAlpha);
+          ctx.lineWidth   = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+
+    // ── Highlighted connections near cursor (coral) ───────────
+    for (const n of this.nodes) {
+      const dx = this.mouse.x - n.x;
+      const dy = this.mouse.y - n.y;
+      const d  = Math.sqrt(dx * dx + dy * dy);
+      if (d < this.CONN_DIST) {
+        const lineAlpha = (1 - d / this.CONN_DIST) * 0.55;
         ctx.beginPath();
-        ctx.arc(s.x, s.y, s.radius * 4, 0, Math.PI * 2);
-        ctx.fillStyle = grad;
+        ctx.moveTo(n.x, n.y);
+        ctx.lineTo(this.mouse.x, this.mouse.y);
+        ctx.strokeStyle = this.rgba(this.CORAL, lineAlpha);
+        ctx.lineWidth   = 0.8;
+        ctx.stroke();
+
+        // Highlight the node itself in coral
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.radius + 0.6, 0, Math.PI * 2);
+        ctx.fillStyle = this.rgba(this.CORAL, lineAlpha * 0.9);
         ctx.fill();
       }
     }
 
-    for (let i = this.sparkles.length - 1; i >= 0; i--) {
-      const sp = this.sparkles[i];
-      sp.x += sp.vx; sp.y += sp.vy;
-      sp.vy += 0.04;
-      sp.alpha -= sp.decay;
-      if (sp.alpha <= 0) { this.sparkles.splice(i, 1); continue; }
-      this.drawStar(ctx, sp.x, sp.y, 4, sp.radius * 2, sp.radius, this.hexToRgba(sp.color, sp.alpha));
+    // ── Code symbol sparkles ──────────────────────────────────
+    ctx.textAlign    = 'center';
+    ctx.textBaseline = 'middle';
+
+    for (let i = this.codeParticles.length - 1; i >= 0; i--) {
+      const p = this.codeParticles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.035; // gravity
+      p.alpha -= p.decay;
+
+      if (p.alpha <= 0) { this.codeParticles.splice(i, 1); continue; }
+
+      // Alternate coral / mint for code symbols
+      const color = (i % 2 === 0) ? this.CORAL : this.MINT;
+      ctx.font      = `bold ${p.size}px 'JetBrains Mono', monospace`;
+      ctx.fillStyle = this.rgba(color, p.alpha);
+      ctx.fillText(p.symbol, p.x, p.y);
     }
   }
 
-  private drawStar(ctx: CanvasRenderingContext2D, cx: number, cy: number,
-                   spikes: number, outerR: number, innerR: number, color: string): void {
-    let rot = (Math.PI / 2) * 3;
-    const step = Math.PI / spikes;
-    ctx.beginPath();
-    ctx.moveTo(cx, cy - outerR);
-    for (let i = 0; i < spikes; i++) {
-      ctx.lineTo(cx + Math.cos(rot) * outerR, cy + Math.sin(rot) * outerR); rot += step;
-      ctx.lineTo(cx + Math.cos(rot) * innerR, cy + Math.sin(rot) * innerR); rot += step;
-    }
-    ctx.lineTo(cx, cy - outerR);
-    ctx.closePath();
-    ctx.fillStyle = color;
-    ctx.fill();
-  }
+  // ── Helpers ──────────────────────────────────────────────────
 
-  private hexToRgba(hex: string, alpha: number): string {
+  private rgba(hex: string, alpha: number): string {
     const r = parseInt(hex.slice(1, 3), 16);
     const g = parseInt(hex.slice(3, 5), 16);
     const b = parseInt(hex.slice(5, 7), 16);
-    return `rgba(${r},${g},${b},${alpha})`;
+    return `rgba(${r},${g},${b},${alpha.toFixed(3)})`;
   }
 }
