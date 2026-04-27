@@ -1,5 +1,5 @@
 import {
-  Component, OnInit, OnDestroy, AfterViewInit,
+  Component, OnDestroy, AfterViewInit,
   ViewChild, ElementRef, NgZone, HostListener
 } from '@angular/core';
 
@@ -9,15 +9,6 @@ interface Node {
   radius: number;
   alpha: number;
   alphaDelta: number;
-}
-
-interface CodeParticle {
-  x: number; y: number;
-  vx: number; vy: number;
-  alpha: number;
-  decay: number;
-  symbol: string;
-  size: number;
 }
 
 @Component({
@@ -31,11 +22,7 @@ export class StarfieldComponent implements AfterViewInit, OnDestroy {
   private ctx!: CanvasRenderingContext2D;
   private animId = 0;
   private nodes: Node[] = [];
-  private codeParticles: CodeParticle[] = [];
   private mouse = { x: -9999, y: -9999 };
-
-  // IT-themed symbols that burst on cursor move
-  private symbols = ['0', '1', '/>', '{', '}', '<', '>', '//', ';', '()', '=>', '[]'];
 
   // Colour palette — coral accent, dim white nodes, mint for connections
   private readonly CORAL  = '#ff6035';
@@ -68,24 +55,6 @@ export class StarfieldComponent implements AfterViewInit, OnDestroy {
   onMouseMove(e: MouseEvent): void {
     this.mouse.x = e.clientX;
     this.mouse.y = e.clientY;
-
-    // Spawn 2–3 code symbol particles per mouse move
-    const count = 2 + Math.floor(Math.random() * 2);
-    for (let i = 0; i < count; i++) {
-      const angle = Math.random() * Math.PI * 2;
-      const speed = 0.6 + Math.random() * 2.2;
-      const sym = this.symbols[Math.floor(Math.random() * this.symbols.length)];
-      this.codeParticles.push({
-        x: e.clientX,
-        y: e.clientY,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed - 0.5, // slight upward bias
-        alpha: 1,
-        decay: 0.022 + Math.random() * 0.018,
-        symbol: sym,
-        size: 9 + Math.floor(Math.random() * 7)
-      });
-    }
   }
 
   // ── Init ────────────────────────────────────────────────────
@@ -194,25 +163,6 @@ export class StarfieldComponent implements AfterViewInit, OnDestroy {
       }
     }
 
-    // ── Code symbol sparkles ──────────────────────────────────
-    ctx.textAlign    = 'center';
-    ctx.textBaseline = 'middle';
-
-    for (let i = this.codeParticles.length - 1; i >= 0; i--) {
-      const p = this.codeParticles[i];
-      p.x += p.vx;
-      p.y += p.vy;
-      p.vy += 0.035; // gravity
-      p.alpha -= p.decay;
-
-      if (p.alpha <= 0) { this.codeParticles.splice(i, 1); continue; }
-
-      // Alternate coral / mint for code symbols
-      const color = (i % 2 === 0) ? this.CORAL : this.MINT;
-      ctx.font      = `bold ${p.size}px 'JetBrains Mono', monospace`;
-      ctx.fillStyle = this.rgba(color, p.alpha);
-      ctx.fillText(p.symbol, p.x, p.y);
-    }
   }
 
   // ── Helpers ──────────────────────────────────────────────────

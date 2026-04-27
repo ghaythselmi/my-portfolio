@@ -6,16 +6,19 @@
                 <img src="assets/logo_dark.png" alt="Logo" class="w-24 cursor-pointer" />
             </a>
             <ul class="nav-menu" #navMenu>
-                <li><a href="#top" class="nav-link">Home</a></li>
-                <li><a href="#education" class="nav-link">Education</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#work" class="nav-link">Work</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#top" class="nav-link">{{ lang.navHome }}</a></li>
+                <li><a href="#education" class="nav-link">{{ lang.navEducation }}</a></li>
+                <li><a href="#about" class="nav-link">{{ lang.navAbout }}</a></li>
+                <li><a href="#experience" class="nav-link">{{ lang.navExperience }}</a></li>
+                <li><a href="#work" class="nav-link">{{ lang.navWork }}</a></li>
+                <li><a href="#contact" class="nav-link">{{ lang.navContact }}</a></li>
             </ul>
 
             <div class="nav-actions">
-                <a href="#contact" class="btn-primary">Let's Connect</a>
+                <button class="lang-toggle" (click)="toggleLang()" [title]="currentLang === 'en' ? 'Passer en français' : 'Switch to English'">
+                    {{ currentLang === 'en' ? 'FR' : 'EN' }}
+                </button>
+                <a href="#contact" class="btn-primary">{{ lang.navCta }}</a>
             </div>
 
             <button class="hamburger" #hamburger>
@@ -33,7 +36,7 @@
                 <img src="assets/ghayth.png" alt="Ghayth Selmi" class="profile-image">
             </div>
             <div class="profile-badge">
-                <span class="badge-text">Available for Work</span>
+                <span class="badge-text">{{ lang.heroBadge }}</span>
             </div>
 
             <h1 class="hero-title">
@@ -42,22 +45,14 @@
             </h1>
 
             <p class="hero-subtitle">
-                <span class="subtitle-letter">F</span><span class="subtitle-letter">u</span><span class="subtitle-letter">l</span><span class="subtitle-letter">l</span><span class="subtitle-letter">-</span><span class="subtitle-letter">S</span><span class="subtitle-letter">t</span><span class="subtitle-letter">a</span><span class="subtitle-letter">c</span><span class="subtitle-letter">k</span>
-                <span class="subtitle-letter"> </span>
-                <span class="subtitle-letter">E</span><span class="subtitle-letter">n</span><span class="subtitle-letter">g</span><span class="subtitle-letter">i</span><span class="subtitle-letter">n</span><span class="subtitle-letter">e</span><span class="subtitle-letter">r</span>
-                <span class="subtitle-letter"> </span>
-                <span class="subtitle-letter">&</span>
-                <span class="subtitle-letter"> </span>
-                <span class="subtitle-letter">D</span><span class="subtitle-letter">e</span><span class="subtitle-letter">v</span><span class="subtitle-letter">O</span><span class="subtitle-letter">p</span><span class="subtitle-letter">s</span>
+                <span *ngFor="let c of chars(lang.heroSubtitle)" class="subtitle-letter">{{ c }}</span>
             </p>
 
-            <p class="hero-description">
-                Recently graduated from ESPRIT, with a strong foundation in full-stack development and DevOps. Building scalable applications and deploying them with precision.
-            </p>
+            <p class="hero-description">{{ lang.heroDesc }}</p>
 
             <div class="hero-actions">
-                <a href="#contact" class="btn-primary btn-large">Get In Touch</a>
-                <button (click)="downloadCV()" class="btn-download btn-large">Download CV</button>
+                <a href="#contact" class="btn-primary btn-large">{{ lang.heroContact }}</a>
+                <button (click)="downloadCV()" class="btn-download btn-large">{{ lang.heroCV }}</button>
             </div>
         </div>
     </section>
@@ -66,7 +61,7 @@
     <section id="education" class="education">
         <div class="section-header">
             <h2 class="section-title">
-                <span class="title-char">E</span><span class="title-char">d</span><span class="title-char">u</span><span class="title-char">c</span><span class="title-char">a</span><span class="title-char">t</span><span class="title-char">i</span><span class="title-char">o</span><span class="title-char">n</span>
+                <span *ngFor="let c of chars(lang.sectionEducation)" class="title-char">{{ c }}</span>
             </h2>
         </div>
 
@@ -74,10 +69,10 @@
             <div class="timeline-item">
                 <div class="timeline-marker"></div>
                 <div class="timeline-content card">
-                    <span class="badge-date">2020 - 2025</span>
-                    <h3>Cloud Computing Engineering</h3>
+                    <span class="badge-date">{{ lang.edu1Date }}</span>
+                    <h3>{{ lang.edu1Degree }}</h3>
                     <div class="school-info">
-                        <p>ESPRIT</p>
+                        <p>{{ lang.edu1School }}</p>
                     </div>
                 </div>
             </div>
@@ -85,10 +80,10 @@
             <div class="timeline-item">
                 <div class="timeline-marker"></div>
                 <div class="timeline-content card">
-                    <span class="badge-date">2015 - 2019</span>
-                    <h3>Scientific Baccalaureate</h3>
+                    <span class="badge-date">{{ lang.edu2Date }}</span>
+                    <h3>{{ lang.edu2Degree }}</h3>
                     <div class="school-info">
-                        <p>Pioneer High School Gabès</p>
+                        <p>{{ lang.edu2School }}</p>
                     </div>
                 </div>
             </div>
@@ -99,15 +94,11 @@
     <section id="about" class="about">
         <div class="section-header">
             <h2 class="section-title">
-                <span class="title-char">A</span><span class="title-char">b</span><span class="title-char">o</span><span class="title-char">u</span><span class="title-char">t</span>
-                <span class="title-char"> </span>
-                <span class="title-char">M</span><span class="title-char">e</span>
+                <span *ngFor="let c of chars(lang.sectionAbout)" class="title-char">{{ c }}</span>
             </h2>
         </div>
 
-        <p class="about-intro">
-            I'm specializing in full-stack development and DevOps, with experience building end-to-end applications and deploying them using modern cloud and CI/CD practices. I work comfortably with frontend frameworks, backend APIs, databases, and containerized environments.
-        </p>
+        <p class="about-intro">{{ lang.aboutIntro }}</p>
 
         <div class="skills-grid">
             <!-- Web Development -->
@@ -118,8 +109,8 @@
                         <polyline points="8 6 2 12 8 18"></polyline>
                     </svg>
                 </div>
-                <h3>Web Development</h3>
-                <p>Angular, Symfony, .NET, Spring Boot</p>
+                <h3>{{ lang.skill1Title }}</h3>
+                <p>{{ lang.skill1Desc }}</p>
             </div>
 
             <!-- Databases -->
@@ -131,8 +122,8 @@
                         <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
                     </svg>
                 </div>
-                <h3>Databases</h3>
-                <p>MySQL, PostgreSQL, MongoDB</p>
+                <h3>{{ lang.skill2Title }}</h3>
+                <p>{{ lang.skill2Desc }}</p>
             </div>
 
             <!-- Cloud & DevOps -->
@@ -142,8 +133,8 @@
                         <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
                     </svg>
                 </div>
-                <h3>Cloud & DevOps</h3>
-                <p>Docker, Kubernetes, Jenkins, Nginx, SonarQube, Grafana, Prometheus, Ansible</p>
+                <h3>{{ lang.skill3Title }}</h3>
+                <p>{{ lang.skill3Desc }}</p>
             </div>
         </div>
     </section>
@@ -152,7 +143,7 @@
     <section id="experience" class="experience">
         <div class="section-header">
             <h2 class="section-title">
-                <span class="title-char">E</span><span class="title-char">x</span><span class="title-char">p</span><span class="title-char">e</span><span class="title-char">r</span><span class="title-char">i</span><span class="title-char">e</span><span class="title-char">n</span><span class="title-char">c</span><span class="title-char">e</span>
+                <span *ngFor="let c of chars(lang.sectionExperience)" class="title-char">{{ c }}</span>
             </h2>
         </div>
 
@@ -160,15 +151,15 @@
             <div class="timeline-item">
                 <div class="timeline-marker"></div>
                 <div class="timeline-content card">
-                    <span class="badge-date">Feb 2025 - Aug 2025</span>
-                    <h3>Full Stack Developer Intern</h3>
+                    <span class="badge-date">{{ lang.exp1Date }}</span>
+                    <h3>{{ lang.exp1Title }}</h3>
                     <div class="company-info">
-                        <p>Spofun</p>
+                        <p>{{ lang.exp1Company }}</p>
                     </div>
                     <ul class="experience-list">
-                        <li>Developed full-stack sports coaching platform using Angular and Spring Boot</li>
-                        <li>Implemented RESTful APIs and real-time features for athlete-coach interaction</li>
-                        <li>Built CI/CD pipelines using Jenkins, Docker, and Docker Compose</li>
+                        <li>{{ lang.exp1li1 }}</li>
+                        <li>{{ lang.exp1li2 }}</li>
+                        <li>{{ lang.exp1li3 }}</li>
                     </ul>
                     <div class="tech-tags">
                         <span class="tech-tag">Angular</span>
@@ -183,15 +174,15 @@
             <div class="timeline-item">
                 <div class="timeline-marker"></div>
                 <div class="timeline-content card">
-                    <span class="badge-date">Jul 2024 - Sep 2024</span>
-                    <h3>Full Stack Developer Intern</h3>
+                    <span class="badge-date">{{ lang.exp2Date }}</span>
+                    <h3>{{ lang.exp2Title }}</h3>
                     <div class="company-info">
-                        <p>ChyrineProd</p>
+                        <p>{{ lang.exp2Company }}</p>
                     </div>
                     <ul class="experience-list">
-                        <li>Developed web application to monitor website availability and SSL certificate status</li>
-                        <li>Designed and implemented responsive UIs using Angular</li>
-                        <li>Implemented server-side features using Symfony and MySQL</li>
+                        <li>{{ lang.exp2li1 }}</li>
+                        <li>{{ lang.exp2li2 }}</li>
+                        <li>{{ lang.exp2li3 }}</li>
                     </ul>
                     <div class="tech-tags">
                         <span class="tech-tag">Symfony</span>
@@ -208,29 +199,25 @@
     <section id="certificates" class="certificates">
         <div class="section-header">
             <h2 class="section-title">
-                <span class="title-char">C</span><span class="title-char">e</span><span class="title-char">r</span><span class="title-char">t</span><span class="title-char">i</span><span class="title-char">f</span><span class="title-char">i</span><span class="title-char">c</span><span class="title-char">a</span><span class="title-char">t</span><span class="title-char">i</span><span class="title-char">o</span><span class="title-char">n</span><span class="title-char">s</span>
+                <span *ngFor="let c of chars(lang.sectionCertifications)" class="title-char">{{ c }}</span>
             </h2>
-            <p class="section-subtitle">Professional certifications demonstrating expertise in cloud technologies and DevOps practices.</p>
+            <p class="section-subtitle">{{ lang.sectionCertSubtitle }}</p>
         </div>
 
         <div class="certificates-grid">
             <div class="cert-card" *ngFor="let cert of certificateDetails | keyvalue" (click)="openCertificate(cert.key)">
-                <!-- Certificate badge icon -->
                 <div class="cert-image">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="12" cy="8" r="6"></circle>
                         <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
                     </svg>
                 </div>
-
-                <h3>{{ cert.value.title }}</h3>
+                <h3>{{ getCertField(cert.key, 'title') }}</h3>
                 <p class="cert-issuer">{{ cert.value.issuer }}</p>
-
                 <div class="cert-date">
-                    <span>{{ cert.value.issueDate }}</span>
+                    <span>{{ getCertField(cert.key, 'issueDate') }}</span>
                 </div>
-
-                <button class="btn-view-cert">View Certificate</button>
+                <button class="btn-view-cert">{{ lang.btnViewCert }}</button>
             </div>
         </div>
 
@@ -247,37 +234,38 @@
                         </svg>
                     </div>
                     <div>
-                        <span class="badge-modal">{{ certificateDetails[selectedCertificate].category }}</span>
-                        <h2>{{ certificateDetails[selectedCertificate].title }}</h2>
+                        <span class="badge-modal">{{ getCertField(selectedCertificate, 'category') }}</span>
+                        <h2>{{ getCertField(selectedCertificate, 'title') }}</h2>
                     </div>
                 </div>
 
                 <div class="modal-image">
-                    <img [src]="certificateDetails[selectedCertificate].image" [alt]="certificateDetails[selectedCertificate].title">
+                    <img [src]="certificateDetails[selectedCertificate].image" [alt]="getCertField(selectedCertificate, 'title')">
                 </div>
 
                 <div class="modal-info-grid">
                     <div class="info-box">
-                        <h3>Issue Date</h3>
-                        <p>{{ certificateDetails[selectedCertificate].issueDate }}</p>
+                        <h3>{{ lang.modalIssueDate }}</h3>
+                        <p>{{ getCertField(selectedCertificate, 'issueDate') }}</p>
                     </div>
-
                     <div class="info-box">
-                        <h3>Issuing Organization</h3>
+                        <h3>{{ lang.modalIssuer }}</h3>
                         <p>{{ certificateDetails[selectedCertificate].issuer }}</p>
                     </div>
                 </div>
 
                 <div class="modal-skills">
-                    <h3>Skills Covered</h3>
+                    <h3>{{ lang.modalSkills }}</h3>
                     <div class="skills-list">
-                        <span class="skill-badge" *ngFor="let skill of certificateDetails[selectedCertificate].skills">
+                        <span class="skill-badge" *ngFor="let skill of getCertField(selectedCertificate, 'skills')">
                             {{ skill }}
                         </span>
                     </div>
                 </div>
 
-                <a [href]="certificateDetails[selectedCertificate].verifyUrl" target="_blank" class="btn-primary btn-verify">Verify Certificate</a>
+                <a [href]="certificateDetails[selectedCertificate].verifyUrl" target="_blank" class="btn-primary btn-verify">
+                    {{ lang.btnVerify }}
+                </a>
             </div>
         </div>
     </section>
@@ -286,22 +274,20 @@
     <section id="work" class="projects">
         <div class="section-header">
             <h2 class="section-title">
-                <span class="title-char">F</span><span class="title-char">e</span><span class="title-char">a</span><span class="title-char">t</span><span class="title-char">u</span><span class="title-char">r</span><span class="title-char">e</span><span class="title-char">d</span>
-                <span class="title-char"> </span>
-                <span class="title-char">W</span><span class="title-char">o</span><span class="title-char">r</span><span class="title-char">k</span>
+                <span *ngFor="let c of chars(lang.sectionWork)" class="title-char">{{ c }}</span>
             </h2>
-            <p class="section-subtitle">Recent projects showcasing full-stack capabilities</p>
+            <p class="section-subtitle">{{ lang.sectionWorkSubtitle }}</p>
         </div>
 
         <div class="projects-grid">
-            <div class="project-card" *ngFor="let project of projectDetails | keyvalue" (click)="openProjectDetails(project.key)">
+            <div class="project-card" *ngFor="let project of activeProjectDetails | keyvalue" (click)="openProjectDetails(project.key)">
                 <div class="project-image">
                     <img [src]="project.value.image" [alt]="project.value.title">
                 </div>
                 <div class="project-info">
                     <h3>{{ project.value.title }}</h3>
                     <p>{{ project.value.subtitle }}</p>
-                    <a href="#" class="btn-arrow">View Project</a>
+                    <a href="#" class="btn-arrow">{{ lang.btnViewProject }}</a>
                 </div>
             </div>
         </div>
@@ -312,41 +298,36 @@
                 <button (click)="closeProjectDetails()" class="close-modal"></button>
 
                 <div class="modal-header">
-                    <span class="badge-modal">{{ projectDetails[selectedProject].category }}</span>
-                    <h2>{{ projectDetails[selectedProject].title }}</h2>
-                    <p class="subtitle-text">{{ projectDetails[selectedProject].subtitle }}</p>
+                    <span class="badge-modal">{{ activeProjectDetails[selectedProject].category }}</span>
+                    <h2>{{ activeProjectDetails[selectedProject].title }}</h2>
+                    <p class="subtitle-text">{{ activeProjectDetails[selectedProject].subtitle }}</p>
                 </div>
 
                 <div class="modal-image">
-                    <img [src]="projectDetails[selectedProject].image" [alt]="projectDetails[selectedProject].title">
+                    <img [src]="activeProjectDetails[selectedProject].image" [alt]="activeProjectDetails[selectedProject].title">
                 </div>
 
                 <div class="modal-section">
-                    <h3>Technologies</h3>
+                    <h3>{{ lang.modalTech }}</h3>
                     <div class="tech-badges">
-                        <span class="tech-badge" *ngFor="let tech of projectDetails[selectedProject].technologies">
+                        <span class="tech-badge" *ngFor="let tech of activeProjectDetails[selectedProject].technologies">
                             {{ tech }}
                         </span>
                     </div>
                 </div>
 
                 <div class="modal-section">
-                    <h3>About</h3>
-                    <p class="description-text">{{ projectDetails[selectedProject].description }}</p>
+                    <h3>{{ lang.modalAbout }}</h3>
+                    <p class="description-text">{{ activeProjectDetails[selectedProject].description }}</p>
                 </div>
 
                 <div class="modal-section">
-                    <h3>Features</h3>
+                    <h3>{{ lang.modalFeatures }}</h3>
                     <ul class="features-list">
-                        <li *ngFor="let feature of projectDetails[selectedProject].features">
+                        <li *ngFor="let feature of activeProjectDetails[selectedProject].features">
                             {{ feature }}
                         </li>
                     </ul>
-                </div>
-
-                <div class="modal-actions">
-                    <a [href]="projectDetails[selectedProject].liveUrl" target="_blank" class="btn-primary">Live Demo</a>
-                    <a [href]="projectDetails[selectedProject].githubUrl" target="_blank" class="btn-secondary">View Code</a>
                 </div>
             </div>
         </div>
@@ -356,15 +337,12 @@
     <section id="contact" class="contact">
         <div class="section-header">
             <h2 class="section-title">
-                <span class="title-char">L</span><span class="title-char">e</span><span class="title-char">t</span><span class="title-char">'</span><span class="title-char">s</span>
-                <span class="title-char"> </span>
-                <span class="title-char">C</span><span class="title-char">o</span><span class="title-char">n</span><span class="title-char">n</span><span class="title-char">e</span><span class="title-char">c</span><span class="title-char">t</span>
+                <span *ngFor="let c of chars(lang.sectionContact)" class="title-char">{{ c }}</span>
             </h2>
-            <p class="section-subtitle">Open to collaborations and exciting projects</p>
+            <p class="section-subtitle">{{ lang.sectionContactSubtitle }}</p>
         </div>
 
         <div class="contact-grid">
-            <!-- Email -->
             <a href="mailto:ghaith.selmi1905@gmail.com" class="contact-card">
                 <div class="contact-icon">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -372,11 +350,10 @@
                         <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                     </svg>
                 </div>
-                <h3>Email</h3>
+                <h3>{{ lang.contactEmail }}</h3>
                 <p>ghaith.selmi1905@gmail.com</p>
             </a>
 
-            <!-- LinkedIn -->
             <a href="https://www.linkedin.com/in/selmi-ghaith-675a12240" target="_blank" class="contact-card">
                 <div class="contact-icon">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -385,11 +362,10 @@
                         <circle cx="4" cy="4" r="2"></circle>
                     </svg>
                 </div>
-                <h3>LinkedIn</h3>
+                <h3>{{ lang.contactLinkedIn }}</h3>
                 <p>selmi-ghaith-675a12240</p>
             </a>
 
-            <!-- GitHub -->
             <a href="https://github.com/ghaythselmi" target="_blank" class="contact-card">
                 <div class="contact-icon">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -397,7 +373,7 @@
                         <path d="M9 18c-4.51 2-5-2-7-2"></path>
                     </svg>
                 </div>
-                <h3>GitHub</h3>
+                <h3>{{ lang.contactGitHub }}</h3>
                 <p>ghaythselmi</p>
             </a>
         </div>
@@ -408,19 +384,16 @@
         <img src="assets/foot.jpg" alt="footer background" class="footer-bg-img">
 
         <div class="footer-content">
-            <!-- Brand Section -->
             <div class="footer-section">
                 <h3>Ghayth Selmi</h3>
-                <p>Full-Stack Engineer & DevOps Specialist crafting modern solutions with precision and innovation.</p>
+                <p>{{ lang.footerTagline }}</p>
                 <div class="footer-social">
-                    <!-- GitHub -->
                     <a href="https://github.com/ghaythselmi" target="_blank" title="GitHub">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
                             <path d="M9 18c-4.51 2-5-2-7-2"></path>
                         </svg>
                     </a>
-                    <!-- LinkedIn -->
                     <a href="https://www.linkedin.com/in/selmi-ghaith-675a12240" target="_blank" title="LinkedIn">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
@@ -428,7 +401,6 @@
                             <circle cx="4" cy="4" r="2"></circle>
                         </svg>
                     </a>
-                    <!-- Email -->
                     <a href="mailto:ghaith.selmi1905@gmail.com" title="Email">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <rect x="2" y="4" width="20" height="16" rx="2"></rect>
@@ -439,22 +411,22 @@
             </div>
 
             <div class="footer-section">
-                <h3>Quick Links</h3>
+                <h3>{{ lang.footerQuickLinks }}</h3>
                 <ul class="footer-links">
-                    <li><a href="#top">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#work">Projects</a></li>
+                    <li><a href="#top">{{ lang.footerHome }}</a></li>
+                    <li><a href="#about">{{ lang.footerAbout }}</a></li>
+                    <li><a href="#experience">{{ lang.footerExperience }}</a></li>
+                    <li><a href="#work">{{ lang.footerProjects }}</a></li>
                 </ul>
             </div>
 
             <div class="footer-section">
-                <h3>Tech Stack</h3>
+                <h3>{{ lang.footerTechStack }}</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Frontend & Backend</a></li>
-                    <li><a href="#">Databases</a></li>
-                    <li><a href="#">Cloud & DevOps</a></li>
-                    <li><a href="#">Tools & More</a></li>
+                    <li><a href="#">{{ lang.footerFrontBack }}</a></li>
+                    <li><a href="#">{{ lang.footerDatabases }}</a></li>
+                    <li><a href="#">{{ lang.footerCloud }}</a></li>
+                    <li><a href="#">{{ lang.footerTools }}</a></li>
                 </ul>
             </div>
         </div>
@@ -466,8 +438,8 @@
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2026 Ghayth Selmi. All rights reserved. | Designed & Built with ❤️ by Ghayth</p>
-            <div class="footer-status">System Online</div>
+            <p>{{ lang.footerCopyright }}</p>
+            <div class="footer-status">{{ lang.footerStatus }}</div>
         </div>
     </footer>
 </div>

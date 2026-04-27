@@ -498,6 +498,7 @@
 .subtitle-letter {
   opacity: 0;
   display: inline-block;
+  white-space: pre;
   animation: letterDrop 0.4s var(--ease-spring) forwards;
 
   @for $i from 1 through 50 {
