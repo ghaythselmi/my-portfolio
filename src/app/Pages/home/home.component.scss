@@ -2130,3 +2130,38 @@ section {
     transition-duration: 0.01ms !important;
   }
 }
+
+.lang-toggle {
+  background: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.lang-toggle:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: scale(1.05);
+}
+
+/* Active click */
+.lang-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Optional: dark navbar version */
+.navbar.scrolled .lang-toggle {
+  border-color: #000;
+  color: #000;
+}
+
+.navbar.scrolled .lang-toggle:hover {
+  background: #000;
+  color: #fff;
+}
