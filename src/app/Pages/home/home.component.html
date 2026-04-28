@@ -16,7 +16,7 @@
 
             <div class="nav-actions">
                 <button class="lang-toggle" (click)="toggleLang()" [title]="currentLang === 'en' ? 'Passer en français' : 'Switch to English'">
-                    {{ currentLang === 'en' ? 'FR' : 'EN' }}
+                    <span>{{ currentLang === 'en' ? 'FR' : 'EN' }}</span>
                 </button>
                 <a href="#contact" class="btn-primary">{{ lang.navCta }}</a>
             </div>
@@ -303,8 +303,14 @@
                     <p class="subtitle-text">{{ activeProjectDetails[selectedProject].subtitle }}</p>
                 </div>
 
-                <div class="modal-image">
+                <div class="modal-image" *ngIf="!(activeProjectDetails[selectedProject].images?.length)">
                     <img [src]="activeProjectDetails[selectedProject].image" [alt]="activeProjectDetails[selectedProject].title">
+                </div>
+
+                <div class="modal-gallery" *ngIf="activeProjectDetails[selectedProject].images?.length">
+                    <div class="gallery-item" *ngFor="let img of activeProjectDetails[selectedProject].images">
+                        <img [src]="img" [alt]="activeProjectDetails[selectedProject].title">
+                    </div>
                 </div>
 
                 <div class="modal-section">
@@ -363,7 +369,7 @@
                     </svg>
                 </div>
                 <h3>{{ lang.contactLinkedIn }}</h3>
-                <p>selmi-ghaith-675a12240</p>
+                <p>Ghaith Selmi</p>
             </a>
 
             <a href="https://github.com/ghaythselmi" target="_blank" class="contact-card">
@@ -432,9 +438,7 @@
         </div>
 
         <div class="footer-divider">
-            <div></div>
-            <a href="#top" class="footer-logo">GS</a>
-            <div></div>
+            <div></div>         
         </div>
 
         <div class="footer-bottom">

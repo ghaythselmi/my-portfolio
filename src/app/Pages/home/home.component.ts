@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular
 
 interface ProjectDetail {
   title: string; subtitle: string; category: string; image: string;
+  images?: string[];
   description: string; technologies: string[]; features: string[];
   liveUrl: string; githubUrl: string;
 }
@@ -89,7 +90,7 @@ export class HomeComponent implements OnInit {
       footerFrontBack: 'Frontend & Backend', footerDatabases: 'Databases',
       footerCloud: 'Cloud & DevOps', footerTools: 'Tools & More',
       footerHome: 'Home', footerAbout: 'About', footerExperience: 'Experience', footerProjects: 'Projects',
-      footerCopyright: '© 2026 Ghayth Selmi. All rights reserved. | Designed & Built with ❤️ by Ghayth',
+      footerCopyright: '© 2026 Ghayth Selmi | Built, broken, fixed, and deployed .',
       footerStatus: 'System Online',
     },
     fr: {
@@ -147,7 +148,8 @@ export class HomeComponent implements OnInit {
       title: 'SpofunCoach',
       subtitle: 'Full-stack Sports Coaching Platform',
       category: 'Full-Stack Development & CI/CD',
-      image: 'assets/Login.png',
+      image: 'assets/spofuncoach.png',
+      images: ['assets/spofuncoach.png', 'assets/Login .png'],
       description: 'SpofunCoach is an all-in-one sports coaching platform designed to connect athletes with certified professional coaches. It enables seamless session booking, real-time scheduling, secure online payments, and detailed performance tracking.',
       technologies: ['Angular','Spring Boot','PostgreSQL','Jhipster','Docker','Jenkins','Azure','SonarQube','Grafana','Prometheus','Git'],
       features: [
@@ -228,7 +230,8 @@ export class HomeComponent implements OnInit {
       title: 'SpofunCoach',
       subtitle: 'Plateforme de Coaching Sportif Full-Stack',
       category: 'Développement Full-Stack & CI/CD',
-      image: 'assets/Login.png',
+      image: 'assets/spofuncoach.png',
+      images: ['assets/spofuncoach.png', 'assets/Login .png'],
       description: "SpofunCoach est une plateforme de coaching sportif tout-en-un conçue pour connecter les athlètes avec des coachs professionnels certifiés. Elle permet la réservation de séances, la planification en temps réel, les paiements en ligne sécurisés et le suivi détaillé des performances.",
       technologies: ['Angular','Spring Boot','PostgreSQL','Jhipster','Docker','Jenkins','Azure','SonarQube','Grafana','Prometheus','Git'],
       features: [
